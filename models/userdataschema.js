@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/grocery')
+
+const userdataschema = new mongoose.Schema({
+    name : {type : String,required : true},
+    email : {type : email,required : true},
+    mobile : {type : Number,required : true,unique : true},
+    address : {type : String,required : true,unique : true},
+    password : {type : String,required : true}
+});
+
+module.exports = mongoose.model('userdataschema',userdataschema);
