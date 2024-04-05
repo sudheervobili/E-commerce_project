@@ -3,30 +3,70 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/css/styles.css">
+		<link rel="stylesheet" href="/css/styles.css" />
 		<title>Signup page</title>
 	</head>
 	<body>
-		<!-- signupform -->
-        <div class="signup-form">
-            <center>
-                <form action="">
-                    <label for="username">Name : </label>
-                    <input type="text" name="username" placeholder="Enter your name"><br>
-                    <label for="Email" >E-mail : </label>
-                    <input type="email" name="Email" placeholder="Ex: abc@gmail.com"><br>
-                    <label for="mbno">Mobile Number : </label>
-                    <input type="text" name="mbno" ><br>
-                    <label for="Address">Address : </label>
-                    <textarea name="Address" id="address" cols="10" rows="4">Enter your address</textarea><br>
-                    <label for="password">Password : </label>
-                    <input type="password" name="password"><br>
-                    <label for="confirmpwd">Confirm password: </label>
-                    <input type="password" name="password" id="password">
-                </form>
-            </center>
-            
-        </div>
-        
-        
+		<div class="signup-form">
+			<h2>Sign-Up</h2>
+			<form action="/aftersignup" method="get">
+				<div class="input-box">
+					<label for="username">Username</label>
+					<input
+						type="text"
+						name="username"
+						id="username"
+						placeholder="Enter your name"
+						required
+					/>
+				</div>
+				<div class="input-box">
+					<label for="email">Email</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Enter E-mail"
+						required
+					/>
+				</div>
+				<div class="input-box">
+					<label for="mbno">Mobile Number</label>
+					<input
+						type="text"
+						name="mbno"
+						id="mbno"
+						placeholder="Mobile Number"
+						required
+					/>
+				</div>
+				<div class="input-box">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Create password"
+						required
+					/>
+				</div>
+				<div class="input-box">
+					<label for="confirm_password">Confirm Password</label>
+					<input
+						type="password"
+						name="confirm_password"
+						id="confirm_password"
+						placeholder="Confirm Password"
+						required
+					/>
+				</div>
+				<div class="input-box button">
+					<input type="submit" value="Sign Up" />
+				</div>
+				<div class="text">
+					<h3>Already have an Account? <a href="#">Login now</a></h3>
+				</div>
+			</form>
+		</div>
+	</body>
 </html>

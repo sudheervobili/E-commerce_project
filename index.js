@@ -16,8 +16,13 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {
 	res.render("signup.ejs");
 });
+app.get("/aftersignup", (req, res) => {
+	res.send("successfully registered");
+});
 
-app.post("/login", (req, res) => {});
+app.get("/login", (req, res) => {
+	res.render("login.ejs");
+});
 
 app.listen(3000, () => {
 	console.log("Server running at port 3000 ");

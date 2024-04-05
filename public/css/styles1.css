@@ -5,14 +5,14 @@
 }
 
 body {
-	background: skyblue;
+	background: bisque;
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.signup-form {
+.login-form {
 	max-width: 440px;
 	width: 100%;
 	background: #fff;
@@ -21,25 +21,25 @@ body {
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.signup-form h2 {
+.login-form h2 {
 	font-size: 25px;
 	font-weight: 500;
 	color: #333;
 	margin-bottom: 20px;
 }
 
-.signup-form form .input-box {
+.login-form form .input-box {
 	margin-bottom: 20px;
 }
 
-.signup-form form .input-box label {
+.login-form form .input-box label {
 	display: block;
 	margin-bottom: 5px;
 	color: #333;
 	font-weight: bold;
 }
 
-.signup-form form .input-box input {
+.login-form form .input-box input {
 	height: 40px;
 	width: 100%;
 	outline: none;
@@ -50,12 +50,12 @@ body {
 	transition: border-color 0.3s ease;
 }
 
-.signup-form form .input-box input:focus,
-.signup-form form .input-box input:valid {
+.login-form form .input-box input:focus,
+.login-form form .input-box input:valid {
 	border-color: #4070f4;
 }
 
-.signup-form form .input-box.button input {
+.login-form form .input-box.button input {
 	height: 40px;
 	width: 100%;
 	color: #fff;
@@ -68,16 +68,6 @@ body {
 	transition: background-color 0.3s ease;
 }
 
-.signup-form form .input-box.button input:hover {
+.login-form form .input-box.button input:hover {
 	background: #0e4bf1;
-}
-
-form .text h3 {
-	color: #333;
-	width: 100%;
-	text-align: center;
-}
-form .text h3 a {
-	color: #4070f4;
-	text-decoration: none;
 }
