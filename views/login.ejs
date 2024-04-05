@@ -7,39 +7,92 @@
 		<title>Login page</title>
 	</head>
 	<body>
-		<div class="login-form">
-			<h2>Login</h2>
-			<% if(signupstatus) { %>
-				<p style="color: green;"> User signup succesfull ! </p>
-			<% } %>
-			<% if(loginerror) { %>
-				<p style="color: red;"> invalid credintials ! </p>
-			<% } %>
-			<form action="/login" method="post">
-				<div class="input-box">
-					<label for="email">email</label>
-					<input
-						type="email"
-						name="email"
-						id="email"
-						placeholder="Enter your email"
-						required
-					/>
-				</div>
-				<div class="input-box">
-					<label for="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						placeholder="Enter your password"
-						required
-					/>
-				</div>
-				<div class="input-box button">
-					<input type="submit" value="Login" />
-				</div>
-			</form>
+		<div class="main">
+			<div class="leftimage">
+				<img src="/images/dmart_cover.jpeg" alt="grocery" />
+			</div>
+			<div class="login-form">
+				<h2>Login</h2>
+				<!-- Add a div to display the login error message -->
+				<div id="login-error" style="color: red; text-align: center"></div>
+				<form
+					id="login-form"
+					action="/login"
+					method="post"
+					onsubmit="return validateForm()"
+				>
+					<div class="input-box">
+						<input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="E-mail"
+							required
+						/>
+					</div>
+					<div class="input-box">
+						<div class="password-input">
+							<input
+								type="password"
+								name="password"
+								id="password"
+								placeholder="Password"
+								required
+							/>
+							<span
+								class="toggle-password"
+								onclick="togglePasswordVisibility('password')"
+							>
+								<img
+									src="/images/eye-slash-icon.png"
+									alt="Toggle password visibility"
+								/>
+							</span>
+						</div>
+					</div>
+					<div class="input-box button">
+						<input type="submit" value="Login" />
+					</div>
+					<div class="text">
+						<h3>Don't have an account? <a href="/signup">Sign up now</a></h3>
+					</div>
+				</form>
+			</div>
 		</div>
+
+		<script>
+			function validateForm() {
+				// Get form input values
+				const email = document.getElementById("email").value;
+				const password = document.getElementById("password").value;
+
+				const loginFailed = true;
+
+				// Display error message if login failed
+				const loginErrorElement = document.getElementById("login-error");
+				if (loginFailed) {
+					loginErrorElement.textContent = "Invalid email or password";
+					return false;
+				} else {
+					loginErrorElement.textContent = ""; // Clear error message if login successful
+
+					window.location.href = "/dashboard";
+				}
+			}
+
+			function togglePasswordVisibility(inputId) {
+				const passwordInput = document.getElementById(inputId);
+				const toggleIcon = passwordInput.nextElementSibling;
+				if (passwordInput.type === "password") {
+					passwordInput.type = "text";
+					toggleIcon.innerHTML =
+						'<img src="/images/eye-icon.png" alt="Hide password">';
+				} else {
+					passwordInput.type = "password";
+					toggleIcon.innerHTML =
+						'<img src="/images/eye-slash-icon.png" alt="Show password">';
+				}
+			}
+		</script>
 	</body>
 </html>
