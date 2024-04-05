@@ -1,0 +1,1 @@
+in this all ejs files are present
