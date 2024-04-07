@@ -2,12 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
+const session = require('express-session');
 const userdatamodel = require("./models/userdataschema");
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+app.use(session({
+    secret: 'ECOMMERCE_GROCERY', 
+    resave: false,
+    saveUninitialized: true
+}));
 
 mongoose.connect('mongodb://localhost:27017/grocery')
     .then(() => {
@@ -18,8 +25,12 @@ mongoose.connect('mongodb://localhost:27017/grocery')
     });
 
 app.get('/', (req, res) => {
-    res.render("navbar");
+    res.render("home",{loginstatus : req.session.status});
 });
+
+app.get('/home',(req,res)=>{
+    res.render("home",{loginstatus : req.session.status});
+})
 
 app.get('/signup', (req, res) => {
     res.render('signup', { emailexists: false, mobileexists: false });
@@ -60,7 +71,18 @@ app.post('/login', async (req, res) => {
     if (!isPasswordValid) {
         return res.render('login', { signupstatus: false, loginerror: true }); 
     }
-    res.send('login succesfull !');
+    req.session.email = email;
+    req.session.status = true;
+    return res.redirect('/');
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Error destroying session:", err);
+        }
+        res.redirect('/');
+    });
 });
 
 app.listen(3000, () => {
