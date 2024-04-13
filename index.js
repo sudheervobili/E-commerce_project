@@ -85,6 +85,34 @@ app.post("/login", async (req, res) => {
 	return res.redirect("/");
 });
 
+app.get('/editprofile',async(req,res)=>{
+	let email = req.session.email;
+	const userdetails = await userdatamodel.findOne({email});
+	res.render('editprofile',{loginstatus : req.session.status,userdetails : userdetails,emailexist : false,mobileexist : false});
+});
+
+app.post('/updateprofile',async(req,res)=>{
+	const {name,email,mobile,address} = req.body;
+	let existingemail = await userdatamodel.findOne({email});
+	let existingmobile = await userdatamodel.findOne({mobile});
+	let userdetails = await userdatamodel.findOne({email});
+	if(email == existingemail){
+		res.render("editprofile",{loginstatus : req.session.status,userdetails : userdetails,mobileexist : false,updatedstatus : false});
+	}
+	if(mobile == existingmobile){
+		res.render("editprofile",{loginstatus : req.session.status,userdetails : userdetails,mobileexist : true,updatedstatus : false});
+	}
+	if(existingemail){
+		existingemail.name = name || existingemail.name;
+		existingemail.mobile = mobile || existingemail.mobile;
+		existingemail.address = address || existingemail.address;
+		await existingemail.save();
+	}
+	userdetails = await userdatamodel.findOne({email});
+
+	res.render('editprofile',{loginstatus : req.session.status,userdetails : userdetails,mobileexist : false,updatedstatus : true});
+});
+
 app.get("/logout", (req, res) => {
 	req.session.destroy((err) => {
 		if (err) {
