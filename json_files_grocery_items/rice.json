@@ -1,0 +1,51 @@
+[
+	{
+		"name": "long grain basmati rice",
+		"price": 240,
+		"quantity": "2kg",
+		"imageurl": "https://m.media-amazon.com/images/I/61UJ24YfdaL._SL1000_.jpg"
+	},
+	{
+		"name": "basmati rice",
+		"price": 110,
+		"quantity": "1kg",
+		"imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJZRo6CgpzrrKtHAwjZlqAzfOD9LOR--UfCQ&s"
+	},
+	{
+		"name": "raw rice",
+		"price": 50,
+		"quantity": "1kg",
+		"imageurl": "https://cdn.shopify.com/s/files/1/0402/6869/3669/products/Brown_joha_5KG_Side1_large.jpg"
+	},
+	{
+		"name": "Gobindo blog rice",
+		"price": 120,
+		"quantity": "500 grams",
+		"imageurl": "https://images-eu.ssl-images-amazon.com/images/I/91ew28-2KtL._AC_UL210_SR210,210_.jpg"
+	},
+	{
+		"name": "short grain Sona masuri rice",
+		"price": 120,
+		"quantity": "1kg",
+		"imageurl": "https://m.media-amazon.com/images/I/71lT3jB6lzL.jpg"
+	},
+	{
+		"name": "Jasmin rice (if you love asian cuisine )",
+		"price": 70,
+		"quantity": "500 grams",
+		"imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSZzs5Yf6OrBvU5rODW2xI-wuwgfgbVsGuVDd0zTxJLg&s"
+	},
+
+	{
+		"name": "red Matta rice",
+		"price": 120,
+		"quantity": "500 grams",
+		"imageurl": "https://m.media-amazon.com/images/I/81E4cZrWiPL._AC_UF894,1000_QL80_.jpg"
+	},
+	{
+		"name": "idly rice",
+		"price": 80,
+		"quantity": "1kg",
+		"imageurl": "https://m.media-amazon.com/images/I/71mljStr1QL._AC_UF1000,1000_QL80_.jpg"
+	}
+]
