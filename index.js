@@ -186,11 +186,7 @@ app.get("/flours", async (req, res) => {
 
 app.get("/rice", async (req, res) => {
 	const rice = await ricemodel.find();
-	res.render("rice", {
-		rice: rice,
-		loginstatus: req.session.status,
-		adminstatus: false,
-	});
+	res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false});
 });
 
 app.get("/logout", (req, res) => {

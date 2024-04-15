@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Tur Dal / కందిపప్పు",
+        "price": 188,
+        "quantity": "1kg",
+        "imageUrl": "https://m.media-amazon.com/images/I/91oyF7-vELL.jpg"
+    },
+    {
+        "name": "Chana Dal / శెనగపప్పు",
+        "price": 110 ,
+        "quantity": "1kg",
+        "imageUrl": "https://m.media-amazon.com/images/I/61Eu4ayja8L._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "name": "Green Gram Dal / పెసలు",
+        "price": 175 ,
+        "quantity": "1kg",
+        "imageUrl": "https://m.media-amazon.com/images/I/91aCyFGW5eL.jpg"
+    },
+    {
+        "name": "Yellow Moong Dal / మూంగ్ పప్పు",
+        "price": 40,
+        "quantity": "1kg",
+        "imageUrl": "https://m.media-amazon.com/images/I/71dI6VP37fL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "name": "Black Gram Dal / మినుములు",
+        "price": 15,
+        "quantity": "1kg",
+        "imageUrl": "https://www.jiomart.com/images/product/original/rvwhlfj9ip/goshudh-soyabean-flour-5-kg-pack-product-images-orvwhlfj9ip-p591368563-0-202307081623.jpg?im=Resize=(1000,1000)"
+    },
+    {
+        "name": "Kabuli chana / శనగలు",
+        "price": 30 ,
+        "quantity": "1kg",
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/kksmikw0/flour/b/b/j/4-best-quality-finger-millet-flour-ragi-atta-4kg-pack-1-ragi-original-imagy2d8rcb2qfvh.jpeg?q=20&crop=false"
+    },
+    {
+        "name": "Rajma / రాజ్మా",
+        "price": 70,
+        "quantity": "1kg",
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/flour/o/t/d/10-makka-atta-maize-corn-flour-10kg-pack-1-corn-flour-trinetra-original-imaghrdqkbfhedqf.jpeg?q=90&crop=false"
+    },
+    {
+        "name": "Brown Chickpeas  / నల్ల శెనగలు",
+        "price": 30 ,
+        "quantity": "1kg",
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/kksmikw0/flour/b/b/j/4-best-quality-finger-millet-flour-ragi-atta-4kg-pack-1-ragi-original-imagy2d8rcb2qfvh.jpeg?q=20&crop=false"
+    },
+    {
+        "name": "Lobia / బొబ్బర్లు",
+        "price": 70,
+        "quantity": "1kg",
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/flour/o/t/d/10-makka-atta-maize-corn-flour-10kg-pack-1-corn-flour-trinetra-original-imaghrdqkbfhedqf.jpeg?q=90&crop=false"
+    },
+    {
+        "name": "Masoor Dal / కందిపప్పు",
+        "price": 70,
+        "quantity": "1kg",
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/flour/o/t/d/10-makka-atta-maize-corn-flour-10kg-pack-1-corn-flour-trinetra-original-imaghrdqkbfhedqf.jpeg?q=90&crop=false"
+    }
+]
