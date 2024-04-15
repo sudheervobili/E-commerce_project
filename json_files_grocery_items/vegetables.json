@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Onion",
+        "price": 36,
+        "quantity": "1kg",
+        "imageUrl": "https://m.media-amazon.com/images/I/41Pi5dfvOoL.jpg"
+    },
+    {
+        "name": "Tomato",
+        "price": 30 ,
+        "quantity": "1kg",
+        "imageUrl": "https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?cs=srgb&dl=pexels-pixabay-533280.jpg&fm=jpg"
+    },
+    {
+        "name": "Potato",
+        "price": 40,
+        "quantity": "1kg",
+        "imageUrl": "https://cdn.mos.cms.futurecdn.net/iC7HBvohbJqExqvbKcV3pP-1200-80.jpg"
+    },
+    {
+        "name": "Green Chilli",
+        "price": 25,
+        "quantity": "100g",
+        "imageUrl": "https://seed2plant.in/cdn/shop/products/biggreenchilliseeds.jpg?v=1606738066"
+    },
+    {
+        "name": "Carrot",
+        "price": 30,
+        "quantity": "500g",
+        "imageUrl": "https://m.media-amazon.com/images/I/81Iy+2xYwgL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "name": "Cauliflower",
+        "price": 24,
+        "quantity": "(400g - 600g)",
+        "imageUrl": "https://m.media-amazon.com/images/I/91EdPVzD99L._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "name": "Capsicum",
+        "price": 38,
+        "quantity": "250g",
+        "imageUrl": "https://example.com/images/zucchini.jpg"
+    },
+    {
+        "name": "Ginger",
+        "price": 60,
+        "quantity": "200g",
+        "imageUrl": "https://example.com/images/cucumber.jpg"
+    },
+    {
+        "name": "Cucumber",
+        "price": 30,
+        "quantity": "500g",
+        "imageUrl": "https://example.com/images/onion.jpg"
+    },
+    {
+        "name": "lemon",
+        "price": 45,
+        "quantity": "220g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    },
+    {
+        "name": "Lady Finger",
+        "price": 30,
+        "quantity": "250g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Mushroom",
+        "price": 45,
+        "quantity": "200g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Bottle Gourd",
+        "price": 33,
+        "quantity": "400g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Beans",
+        "price": 20,
+        "quantity": "250g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Garlic",
+        "price": 62,
+        "quantity": "200g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Cabbage",
+        "price": 22,
+        "quantity": "400g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+    ,
+    {
+        "name": "Brinjal",
+        "price": 60,
+        "quantity": "500g",
+        "imageUrl": "https://example.com/images/cauliflower.jpg"
+    }
+]

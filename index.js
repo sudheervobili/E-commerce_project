@@ -40,7 +40,7 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-	res.render("login", { loginerror: false , adminstatus : false});
+	res.render("login", { loginerror: false , adminstatus : false , signupstatus : false});
 });
 
 app.get("/adminlogin", (req, res) => {
@@ -94,7 +94,7 @@ app.post("/adminlogin", async (req, res) => {
 	if(email === 'admin@gmail.com' && password === '123'){
 		req.session.email = email;
 		req.session.status = true;
-		res.render('adminpage',{adminstatus : true,loginstatus : false,adminstatus : true})
+		res.render('adminpage',{adminstatus : true,loginstatus : false})
 	}else{
 		res.render('adminlogin',{loginerror : true , adminstatus : false})
 	}
@@ -123,6 +123,9 @@ app.post('/updateprofile', async (req, res) => {
     res.render('editprofile', {loginstatus: req.session.status,adminstatus : false,userdetails: userdetails,mobileexist: false,updatedstatus: true});
 });
 
+app.get('/vegetables',(req,res)=>{
+	res.render('vegetables',{loginstatus : req.session.status,adminstatus : false});
+});
 
 app.get("/logout", (req, res) => {
 	req.session.destroy((err) => {
