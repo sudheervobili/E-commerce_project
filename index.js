@@ -6,6 +6,7 @@ const session = require("express-session");
 const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
 const floursmodel = require("./models/flours");
+const ricemodel = require("./models/rice");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -38,11 +39,19 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {
-	res.render("signup", {emailexists: false,mobileexists: false,adminstatus: false});
+	res.render("signup", {
+		emailexists: false,
+		mobileexists: false,
+		adminstatus: false,
+	});
 });
 
 app.get("/login", (req, res) => {
-	res.render("login", { loginerror: false , adminstatus : false , signupstatus : false});
+	res.render("login", {
+		loginerror: false,
+		adminstatus: false,
+		signupstatus: false,
+	});
 });
 
 app.get("/adminlogin", (req, res) => {
@@ -55,11 +64,19 @@ app.post("/signup", async (req, res) => {
 	const checkmobile = await userdatamodel.findOne({ mobile: mobile });
 
 	if (checkemail) {
-		return res.render("signup", {emailexists: true,mobileexists: false,adminstatus: false});
+		return res.render("signup", {
+			emailexists: true,
+			mobileexists: false,
+			adminstatus: false,
+		});
 	}
 
 	if (checkmobile) {
-		return res.render("signup", {emailexists: false,mobileexists: true,adminstatus: false});
+		return res.render("signup", {
+			emailexists: false,
+			mobileexists: true,
+			adminstatus: false,
+		});
 	}
 
 	const hashedpwd = await bcryptjs.hash(password, 12);
@@ -71,7 +88,11 @@ app.post("/signup", async (req, res) => {
 		password: hashedpwd,
 	});
 	await newuser.save();
-	res.render("login", {signupstatus: true,loginerror: false,adminstatus: false});
+	res.render("login", {
+		signupstatus: true,
+		loginerror: false,
+		adminstatus: false,
+	});
 });
 
 app.post("/login", async (req, res) => {
@@ -79,12 +100,20 @@ app.post("/login", async (req, res) => {
 	const user = await userdatamodel.findOne({ email: email });
 
 	if (!user) {
-		return res.render("login", {signupstatus: false,loginerror: true,adminstatus: false});
+		return res.render("login", {
+			signupstatus: false,
+			loginerror: true,
+			adminstatus: false,
+		});
 	}
 
 	const isPasswordValid = await bcryptjs.compare(password, user.password);
 	if (!isPasswordValid) {
-		return res.render("login", {signupstatus: false,loginerror: true,adminstatus: false});
+		return res.render("login", {
+			signupstatus: false,
+			loginerror: true,
+			adminstatus: false,
+		});
 	}
 	req.session.email = email;
 	req.session.status = true;
@@ -96,16 +125,22 @@ app.post("/adminlogin", async (req, res) => {
 	if (email === "admin@gmail.com" && password === "123") {
 		req.session.email = email;
 		req.session.status = true;
-		res.render('adminpage',{adminstatus : true,loginstatus : false})
-	}else{
-		res.render('adminlogin',{loginerror : true , adminstatus : false})
+		res.render("adminpage", { adminstatus: true, loginstatus: false });
+	} else {
+		res.render("adminlogin", { loginerror: true, adminstatus: false });
 	}
 });
 
 app.get("/editprofile", async (req, res) => {
 	let email = req.session.email;
 	const userdetails = await userdatamodel.findOne({ email });
-	res.render("editprofile", {loginstatus: req.session.status,adminstatus: false,userdetails: userdetails,emailexist: false,mobileexist: false});
+	res.render("editprofile", {
+		loginstatus: req.session.status,
+		adminstatus: false,
+		userdetails: userdetails,
+		emailexist: false,
+		mobileexist: false,
+	});
 });
 
 app.post("/updateprofile", async (req, res) => {
@@ -122,17 +157,40 @@ app.post("/updateprofile", async (req, res) => {
 	}
 	const userdetails = await userdatamodel.findOne({ email });
 
-	res.render("editprofile", {loginstatus: req.session.status,adminstatus: false,userdetails: userdetails,mobileexist: false,updatedstatus: true});
+	res.render("editprofile", {
+		loginstatus: req.session.status,
+		adminstatus: false,
+		userdetails: userdetails,
+		mobileexist: false,
+		updatedstatus: true,
+	});
 });
 
-app.get('/vegetables',async(req,res)=>{
+app.get("/vegetables", async (req, res) => {
 	const vegetables = await vegetablesmodel.find();
-	res.render('vegetables',{vegetables : vegetables,loginstatus : req.session.status,adminstatus : false});
+	res.render("vegetables", {
+		vegetables: vegetables,
+		loginstatus: req.session.status,
+		adminstatus: false,
+	});
 });
 
-app.get('/flours',async(req,res)=>{
+app.get("/flours", async (req, res) => {
 	const flours = await floursmodel.find();
-	res.render('flours',{flours : flours,loginstatus : req.session.status,adminstatus : false});
+	res.render("flours", {
+		flours: flours,
+		loginstatus: req.session.status,
+		adminstatus: false,
+	});
+});
+
+app.get("/rice", async (req, res) => {
+	const rice = await ricemodel.find();
+	res.render("rice", {
+		rice: rice,
+		loginstatus: req.session.status,
+		adminstatus: false,
+	});
 });
 
 app.get("/logout", (req, res) => {
