@@ -39,72 +39,72 @@
         "name": "Capsicum",
         "price": 38,
         "quantity": "250g",
-        "imageUrl": "https://example.com/images/zucchini.jpg"
+        "imageUrl": "https://www.shutterstock.com/image-photo/green-pepper-isolated-on-white-600nw-1381756703.jpg"
     },
     {
         "name": "Ginger",
         "price": 60,
         "quantity": "200g",
-        "imageUrl": "https://example.com/images/cucumber.jpg"
+        "imageUrl": "https://t3.ftcdn.net/jpg/02/76/97/90/360_F_276979013_VixAnzzAmShrq7j83Iv8IATlpKkuZhSu.jpg"
     },
     {
         "name": "Cucumber",
         "price": 30,
         "quantity": "500g",
-        "imageUrl": "https://example.com/images/onion.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/71xkI-PIE5L.jpg"
     },
     {
         "name": "lemon",
         "price": 45,
         "quantity": "220g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZr4XmoG7xdtlJqFa7lKIYTftlbO_Uv2H-5Qd_H8-2Fboqg_MC93gNqmrTLzh4qDhjK_U&usqp=CAU"
     },
     {
         "name": "Lady Finger",
         "price": 30,
         "quantity": "250g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/ked56kw0/vegetable/7/e/c/250-ladies-finger-un-branded-no-whole-original-imafv2ftstpp8e4e.jpeg?q=90&crop=false"
     }
     ,
     {
         "name": "Mushroom",
         "price": 45,
         "quantity": "200g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2021/3/PE/RL/MQ/16464298/fresh-oyster-mushroom.jpg"
     }
     ,
     {
         "name": "Bottle Gourd",
         "price": 33,
         "quantity": "400g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://seed2plant.in/cdn/shop/products/bottlegourdseeds.jpg?v=1603963208"
     }
     ,
     {
         "name": "Beans",
         "price": 20,
         "quantity": "250g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://seed2plant.in/cdn/shop/products/Beansseeds.jpg?v=1603967248"
     }
     ,
     {
         "name": "Garlic",
         "price": 62,
         "quantity": "200g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://m.media-amazon.com/images/I/71KmgOL2q4L._AC_UF1000,1000_QL80_.jpg"
     }
     ,
     {
         "name": "Cabbage",
         "price": 22,
         "quantity": "400g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/4/AP/YU/JA/151691722/fresh-cabbage-vegetable.jpg"
     }
     ,
     {
         "name": "Brinjal",
         "price": 60,
         "quantity": "500g",
-        "imageUrl": "https://example.com/images/cauliflower.jpg"
+        "imageUrl": "https://t4.ftcdn.net/jpg/03/69/98/49/360_F_369984944_mp5bcE534T45okjhprMta7z6ujQlaYXC.jpg"
     }
 ]
