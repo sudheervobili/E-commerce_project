@@ -5,6 +5,7 @@ const bcryptjs = require("bcryptjs");
 const session = require("express-session");
 const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
+const floursmodel = require("./models/flours");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -127,6 +128,11 @@ app.post("/updateprofile", async (req, res) => {
 app.get('/vegetables',async(req,res)=>{
 	const vegetables = await vegetablesmodel.find();
 	res.render('vegetables',{vegetables : vegetables,loginstatus : req.session.status,adminstatus : false});
+});
+
+app.get('/flours',async(req,res)=>{
+	const flours = await floursmodel.find();
+	res.render('flours',{flours : flours,loginstatus : req.session.status,adminstatus : false});
 });
 
 app.get("/logout", (req, res) => {
