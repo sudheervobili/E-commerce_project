@@ -3,14 +3,124 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/signup.css" />
+    <style>
+		* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		font-family: 'Book Antiqua', serif;
+	}
+
+	body {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.main {
+		display: flex;
+	}
+
+
+	.signup-form {
+		max-width: 500px;
+		width: 100%;
+		padding: 50px;
+		border-radius: 50px;
+		border: 2px solid #1D3226;
+		background-color: white;
+		box-shadow: 0 5px 10px rgba(55, 45, 45, 0.2);
+		height: 600px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.signup-form h2 {
+		font-size: 25px;
+		text-align: center;
+		font-weight: bold;
+		color: #1D3226;
+		margin-bottom: 20px;
+	}
+
+	.signup-form form .input-box {
+		width:400px;
+		border-radius: 20px;
+		margin-bottom: 20px;
+	}
+
+	.signup-form form .input-box input {
+		width: 100%;
+		height: 50px;
+		outline: none;
+		padding: 0 10px;
+		font-size: 16px;
+		border: 1px solid #ccc;
+		border-radius: 15px;
+		transition: border-color 0.3s ease;
+	}
+
+	.signup-form form .input-box input:focus,
+	.signup-form form .input-box input:valid {
+		border-color: #1D3226;
+	}
+
+	.signup-form form .input-box.button input {
+		height: 35px; 
+		width: 80%;
+		color: white;
+		font-weight: bold;
+		margin-left: 40px;
+		border: none;
+		background-color: #1D3226;
+		border-radius: 15px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	.signup-form form .input-box.button input:hover {
+		background: gray;
+	}
+
+	form .text h3 {
+		color: #333;
+		width: 100%;
+		text-align: center;
+	}
+
+	form .text h3 a {
+		color: #4070f4;
+		text-decoration: none;
+	}
+
+	.signup-form form .input-box {
+		position: relative;
+	}
+
+	.signup-form form .input-box .password-input {
+		position: relative;
+	}
+
+	.signup-form form .input-box .toggle-password {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 10px;
+		cursor: pointer;
+	}
+
+	.signup-form form .input-box .toggle-password img {
+		width: 20px;
+		height: auto;
+	}
+
+	</style>
     <title>Signup page</title>
 </head>
 <body>
     <div class="main">
-		<div class="leftimage">
-			<img src="/images/grocery.png" alt="grocery">
-		</div>
 		<div class="signup-form">
 			<h2>Sign-Up</h2>
 			<% if(emailexists) { %>
@@ -88,7 +198,7 @@
 					<input type="submit" value="Sign Up" />
 				</div>
 				<div class="text">
-					<h3>Already have an Account? <a href="/login">Login now</a></h3>
+					<h3>Already have an Account? <a href="/login"><strong>login</strong></a></h3>
 				</div>
 			</form>
 		</div>

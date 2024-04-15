@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <style>
+        body{
+            font-family: 'Book Antiqua',serif;
+            font-size: 14;
+        }
         .container {
             max-width: 400px;
             padding: 20px;
@@ -60,8 +64,8 @@
         }
 
         button {
-            background-color: lightgray;
-            color: black;
+            background-color: #1D3226;
+            color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -71,6 +75,7 @@
 
         button:hover {
             background-color: grey;
+            color: white;
         }
 
         #closeButton {
@@ -90,16 +95,16 @@
 <body>
     <%- include('navbar') %>
     <div class="main">
-        <h1>My Profile</h1>
+        <h1 style="color: #1D3226;">My Profile</h1>
     <div class="container">
         <% if(mobileexist) { %>
             <p style="color: red;">mobile already exist !</p>
         <% } %>
         <% if(userdetails) { %>
-            <p><strong>Name:</strong> <%= userdetails.name %></p>
-            <p><strong>Email:</strong> <%= userdetails.email %></p>
-            <p><strong>Mobile:</strong> <%= userdetails.mobile %></p>
-            <p><strong>Address:</strong> <%= userdetails.address %></p>
+            <p><strong style="color: #1D3226;">Name:</strong> <%= userdetails.name %></p>
+            <p><strong style="color: #1D3226;">Email:</strong> <%= userdetails.email %></p>
+            <p><strong style="color: #1D3226;">Mobile:</strong> <%= userdetails.mobile %></p>
+            <p><strong style="color: #1D3226;">Address:</strong> <%= userdetails.address %></p>
             <button id="editButton">Edit</button>
         <% } %>
     </div>
@@ -111,15 +116,15 @@
             <form id="editForm" method="POST" action="/updateprofile">
                <div>
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value="<%= userdetails ? userdetails.name : '' %>">
+                    <input type="text" id="name" name="newname" value="<%= userdetails ? userdetails.name : '' %>">
                 </div>
                 <div>
                     <label for="mobile">Mobile:</label>
-                    <input type="tel" id="mobile" name="mobile" value="<%= userdetails ? userdetails.mobile : '' %>">
+                    <input type="tel" id="mobile" name="newmobile" value="<%= userdetails ? userdetails.mobile : '' %>">
                 </div>
                 <div>
                     <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" value="<%= userdetails ? userdetails.address : '' %>">
+                    <input type="text" id="address" name="newaddress" value="<%= userdetails ? userdetails.address : '' %>">
                 </div>
 
                 <button type="submit">Update</button>

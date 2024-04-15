@@ -116,19 +116,16 @@
 		}
 
 		</style>
-		<title>Login</title>
+		<title>Admin Login</title>
 	</head>
 	<body>
 		<div class="main">
 		<div class="login-form">
 			<h2>Login</h2>
-			<% if(signupstatus) { %>
-				<p style="color: green;"> User signup succesfull ! </p>
-			<% } %>
 			<% if(loginerror) { %>
 				<p style="color: red;"> invalid credintials ! </p>
 			<% } %>
-			<form action="/login" method="post">
+			<form action="/adminlogin" method="post">
 				<div class="input-box">
 					<input
 						type="email"
@@ -151,7 +148,6 @@
 					<input type="submit" value="Login" />
 				</div>
 			</form>
-			<p style="text-align: center;">Don't have an account <a href="/signup" style="text-decoration: none;color: #1d1d1d;"><strong>signup</strong></a></p>
 		</div>
 
 		<script>
