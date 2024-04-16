@@ -7,6 +7,7 @@ const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
 const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
+const cartmodel = require("./models/cart");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -100,11 +101,7 @@ app.post("/login", async (req, res) => {
 	const user = await userdatamodel.findOne({ email: email });
 
 	if (!user) {
-		return res.render("login", {
-			signupstatus: false,
-			loginerror: true,
-			adminstatus: false,
-		});
+		return res.render("login", {signupstatus: false,loginerror: true,adminstatus: false,});
 	}
 
 	const isPasswordValid = await bcryptjs.compare(password, user.password);
@@ -168,26 +165,48 @@ app.post("/updateprofile", async (req, res) => {
 
 app.get("/vegetables", async (req, res) => {
 	const vegetables = await vegetablesmodel.find();
-	res.render("vegetables", {
-		vegetables: vegetables,
-		loginstatus: req.session.status,
-		adminstatus: false,
-	});
+	const alertMessage = req.session.alertMessage;
+    req.session.alertMessage = null;
+	res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
 });
 
 app.get("/flours", async (req, res) => {
 	const flours = await floursmodel.find();
-	res.render("flours", {
-		flours: flours,
-		loginstatus: req.session.status,
-		adminstatus: false,
-	});
+	const alertMessage = req.session.alertMessage;
+    req.session.alertMessage = null;
+	res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
 });
 
 app.get("/rice", async (req, res) => {
 	const rice = await ricemodel.find();
-	res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false});
+	const alertMessage = req.session.alertMessage;
+    req.session.alertMessage = null;
+	res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
 });
+
+app.post('/add-to-cart', async (req, res) => {
+    const { id, quantity, price, name } = req.body;
+	const useremail = req.session.email;
+
+	if(req.session.status){
+		try {
+			await cartmodel.create({email: useremail,itemid: id,itemname: name,itemquantity: quantity,itemquantitylevel: 1,itemprice: price});
+			req.session.alertMessage = "Item added to cart";
+	
+		} catch (error) {
+			console.error("Error adding item to cart:", error);
+			res.status(500).send("An error occurred while adding the item to the cart.");
+			return;
+		}
+	}else{
+		return res.render("login", {signupstatus: false,loginerror: false,adminstatus: false});
+	}
+    const refererUrl = req.headers.referer;
+    res.redirect(refererUrl);
+});
+
+
+
 
 app.get("/logout", (req, res) => {
 	req.session.destroy((err) => {

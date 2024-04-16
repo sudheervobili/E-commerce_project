@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vegetable Items</title>
 		<link
@@ -78,6 +79,11 @@
 
 	<body>
 		<%- include('navbar') %>
+		<% if (alertMessage) { %>
+			<script>
+				alert('item added to cart');
+			</script>
+		<% } %>
 		<h1 style="text-align: center;">Vegetables</h1><br><br>
 		<div class="container h-100">
 			<div class="row row-cols-1 row-cols-md-4 g-4">
@@ -97,11 +103,18 @@
 							<h5 class="text-center">
 								Rs <%= vegetables[i].price.toFixed(2) %>
 							</h5>
-							<div class="btn">
-								<button type="button">
-									Add <i class="fas fa-cart-plus"></i>
-								</button>
-							</div>
+							<form action="/add-to-cart" method="POST">
+								<input type="hidden" name="id" value="<%= vegetables[i]._id %>" />
+								<input type="hidden" name="quantity" value="<%= vegetables[i].quantity %>" />
+								<input type="hidden" name="price" value="<%= vegetables[i].price.toFixed(2) %>" />
+								<input type="hidden" name="name" value="<%= vegetables[i].name %>" />
+	
+								<div class="btn">
+									<button type="submit">
+										Add <i class="fas fa-cart-plus"></i>
+									</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -110,14 +123,6 @@
 		</div>
 
 		<script>
-			function addToCart(vegetableId) {
-				const quantity = document.getElementById(
-					`quantity_${vegetableId}`
-				).value;
-				console.log(
-					`Adding ${quantity} units of vegetable ID ${vegetableId} to the cart.`
-				);
-			}
 
 			function validateQuantity(inputElement) {
 				if (inputElement.value < inputElement.min) {

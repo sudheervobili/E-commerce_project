@@ -77,6 +77,12 @@
 	</head>
 	<body>
 		<%- include('navbar') %>
+		<% if (alertMessage) { %>
+			<script>
+				alert('item added to cart');
+			</script>
+		<% } %>
+
 		<h1 style="text-align: center;">Rice</h1><br><br>
 		<div class="container h-100">
 			<div class="row row-cols-1 row-cols-md-3 g-4">
@@ -94,11 +100,18 @@
 								Quantity: <%= rice[i].quantity %>
 							</p>
 							<h5 class="text-center">$<%= rice[i].price.toFixed(2) %></h5>
-							<div class="btn">
-								<button type="button">
-									Add <i class="fas fa-cart-plus"></i>
-								</button>
-							</div>
+							<form action="/add-to-cart" method="POST">
+								<input type="hidden" name="id" value="<%= rice[i]._id %>" />
+								<input type="hidden" name="quantity" value="<%= rice[i].quantity %>" />
+								<input type="hidden" name="price" value="<%= rice[i].price.toFixed(2) %>" />
+								<input type="hidden" name="name" value="<%= rice[i].name %>" />
+	
+								<div class="btn">
+									<button type="submit">
+										Add <i class="fas fa-cart-plus"></i>
+									</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
