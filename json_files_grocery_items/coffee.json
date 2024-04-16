@@ -1,0 +1,45 @@
+[
+	{
+		"name": "Coffee powder",
+		"price": 300,
+		"quantity": "100 gm",
+		"imageUrl": "https://www.netmeds.com/images/product-v1/600x600/911135/nescafe_classic_instant_coffee_powder_100_gm_0_0.jpg"
+	},
+	{
+		"name": "Sugar",
+		"price": 100,
+		"quantity": "2kg",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/10000459_13-bb-royal-refined-sugar-sulphurless.jpg"
+	},
+	{
+		"name": "Jaggery",
+		"price": 105,
+		"quantity": "2kg",
+		"imageUrl": "https://www.naatusakkarai.com/wp-content/uploads/2022/06/round-jaggery-1.webp"
+	},
+
+	{
+		"name": "Milk Powder",
+		"price": "225",
+		"quantity": "500gm",
+		"imageUrl": "https://www.patanjaliayurved.net/assets/product_images/400x500/16891405111.png"
+	},
+	{
+		"name": "Assam Tea Leaves",
+		"price": "169",
+		"quantity": "250gm",
+		"imageUrl": "https://m.media-amazon.com/images/I/6180gqBse2L._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Green Tea Powder",
+		"price": "199",
+		"quantity": "250gm",
+		"imageUrl": "https://cafedesireonline.in/cdn/shop/products/GREEN-TEA-MASALA.png?v=1667561345"
+	},
+	{
+		"name": "Tea Powder",
+		"price": "599",
+		"quantity": "500gm",
+		"imageUrl": "https://cdn.grofers.com/app/images/products/sliding_image/57894a.jpg?ts=1703497593"
+	}
+]
