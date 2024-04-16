@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Cart</title>
     <style>
         table {
@@ -100,40 +100,44 @@
             var currentQuantity = parseInt(quantityElement.innerText);
             var newQuantity = currentQuantity + 1;
             quantityElement.innerText = newQuantity;
-            updateTotal(itemId, newQuantity);
+            updateRowTotal(itemId, newQuantity);
         }
 
         function decrementQuantity(itemId) {
             var quantityElement = document.getElementById("quantity_" + itemId);
             var currentQuantity = parseInt(quantityElement.innerText);
+        
             if (currentQuantity > 1) {
                 var newQuantity = currentQuantity - 1;
                 quantityElement.innerText = newQuantity;
-                updateTotal(itemId, newQuantity);
+                updateRowTotal(itemId, newQuantity);
             }
         }
-        function updateTotal(itemId, newQuantity) {
+
+        function updateRowTotal(itemId, newQuantity) {
+            var row = document.querySelector("#quantity_" + itemId).closest("tr");
+            var priceElement = row.querySelector("td:nth-child(4)");
+            var price = parseFloat(priceElement.innerText);
+            var newTotal = newQuantity * price;
             var totalElement = document.getElementById("total_" + itemId);
-            var priceElement = document.querySelector("#quantity_" + itemId).closest("tr").querySelector("td:nth-child(5)");
-            var itemPrice = parseFloat(priceElement.innerText);
-            var newTotal = newQuantity * itemPrice;
-            
             totalElement.innerText = newTotal.toFixed(2);
             updateFinalTotal();
         }
-        function updateFinalTotal() {
-    const totalElements = document.querySelectorAll("[id^='total_']");
-    let finalTotal = 0;
-    
-    totalElements.forEach(totalElement => {
-        finalTotal += parseFloat(totalElement.innerText);
-    });
-    console.log("Final Total:", finalTotal);
-    const finalTotalElement = document.getElementById("finalTotal");
-    finalTotalElement.innerText = finalTotal.toFixed(2);
-}
 
+        function updateFinalTotal() {
+            const totalElements = document.querySelectorAll("[id^='total_']");
+            let finalTotal = 0;
+            totalElements.forEach(totalElement => {
+                finalTotal += parseFloat(totalElement.innerText);
+            });
+            
+            const finalTotalElement = document.getElementById("finalTotal");
+            finalTotalElement.innerText = finalTotal.toFixed(2);
+        }
+
+        window.onload = function() {
+            updateFinalTotal();
+        };
     </script>
 </body>
-
 </html>
