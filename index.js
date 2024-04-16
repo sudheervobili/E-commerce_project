@@ -7,8 +7,8 @@ const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
 const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
-const coffeemodel = require("./models/coffee");
 const cartmodel = require("./models/cart");
+const coffeemodel = require("./models/coffees");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -59,6 +59,7 @@ app.get("/login", (req, res) => {
 app.get("/adminlogin", (req, res) => {
 	res.render("adminlogin", { loginerror: false, adminstatus: false });
 });
+
 
 app.post("/signup", async (req, res) => {
 	const { name, email, mobile, address, password } = req.body;
@@ -203,9 +204,9 @@ app.get("/rice", async (req, res) => {
 		alertMessage: alertMessage,
 	});
 });
-app.get("/coffee-tea-sugar", async (req, res) => {
+
+app.get('/coffee',async(req,res)=>{
 	const coffee = await coffeemodel.find();
-	console.log(coffee);
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
 	res.render("coffee", {
@@ -214,7 +215,7 @@ app.get("/coffee-tea-sugar", async (req, res) => {
 		adminstatus: false,
 		alertMessage: alertMessage,
 	});
-});
+})
 
 app.post("/add-to-cart", async (req, res) => {
 	const { id, quantity, price, name } = req.body;
