@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+        }
+
+        th, td {
+            border: none; 
+            padding: 10px; 
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2; 
+            font-weight: bold; 
+        }
+
+        img {
+            width: 50px; 
+            height: 50px; 
+            object-fit: cover; 
+        }
+
+        button {
+            padding: 5px 10px; 
+            background-color: red; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+
+        button:hover {
+            background-color: darkred; 
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('navbar') %>
+    <h1 style="text-align: center; color: #1d1d1d; padding-bottom: 10px;">Cart</h1>
+    <% if (cartdata && cartdata.length > 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Quantity Level</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <% cartdata.forEach(item => { %>
+            <tr>
+                <td>
+                   
+                </td>
+                <td><%= item.itemname %></td>
+                <td><%= item.itemquantity %></td>
+                <td><%= item.itemquantitylevel %></td>
+                <td><%= parseFloat(item.itemprice).toFixed(2) %></td>
+                <td><%= (item.itemquantitylevel * parseFloat(item.itemprice)).toFixed(2) %></td>
+                <td>
+                    <form action="/deleteitem" method="post">
+                        <input type="hidden" name="itemid" value="<%= item._id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% }else{ %>
+        <p style="text-align: center; font-size: 24px; color: #1d1d1d; padding-top: 30px;"> cart is empty !!</p>
+    <% } %>
+</body>
+</html>

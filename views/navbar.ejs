@@ -108,6 +108,12 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    #profileid{
+      color:#1D3226;
+    }
+    #profileid:hover{
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -128,7 +134,7 @@
     <% }else if(loginstatus) { %>
       <li><a href="/home">Home</a></li>
       <li class="dropdown">
-        <a>Profile</a>
+        <a id="profileid">Profile</a>
         <div class="dropdown-content">
           <a href="/editprofile">My Profile</a>
           <a href="/mycart">My Cart</a>
