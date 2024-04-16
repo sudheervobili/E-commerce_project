@@ -7,6 +7,7 @@ const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
 const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
+const coffeemodel = require("./models/coffee");
 const cartmodel = require("./models/cart");
 
 const app = express();
@@ -81,9 +82,19 @@ app.post("/signup", async (req, res) => {
 	}
 
 	const hashedpwd = await bcryptjs.hash(password, 12);
-	const newuser = new userdatamodel({name: name,email: email,mobile: mobile,address: address,password: hashedpwd});
+	const newuser = new userdatamodel({
+		name: name,
+		email: email,
+		mobile: mobile,
+		address: address,
+		password: hashedpwd,
+	});
 	await newuser.save();
-	res.render("login", {signupstatus: true,loginerror: false,adminstatus: false});
+	res.render("login", {
+		signupstatus: true,
+		loginerror: false,
+		adminstatus: false,
+	});
 });
 
 app.post("/login", async (req, res) => {
@@ -91,12 +102,20 @@ app.post("/login", async (req, res) => {
 	const user = await userdatamodel.findOne({ email: email });
 
 	if (!user) {
-		return res.render("login", {signupstatus: false,loginerror: true,adminstatus: false,});
+		return res.render("login", {
+			signupstatus: false,
+			loginerror: true,
+			adminstatus: false,
+		});
 	}
 
 	const isPasswordValid = await bcryptjs.compare(password, user.password);
 	if (!isPasswordValid) {
-		return res.render("login", {signupstatus: false,loginerror: true,adminstatus: false});
+		return res.render("login", {
+			signupstatus: false,
+			loginerror: true,
+			adminstatus: false,
+		});
 	}
 	req.session.email = email;
 	req.session.status = true;
@@ -117,7 +136,13 @@ app.post("/adminlogin", async (req, res) => {
 app.get("/editprofile", async (req, res) => {
 	let email = req.session.email;
 	const userdetails = await userdatamodel.findOne({ email });
-	res.render("editprofile", {loginstatus: req.session.status,adminstatus: false,userdetails: userdetails,emailexist: false,mobileexist: false});
+	res.render("editprofile", {
+		loginstatus: req.session.status,
+		adminstatus: false,
+		userdetails: userdetails,
+		emailexist: false,
+		mobileexist: false,
+	});
 });
 
 app.post("/updateprofile", async (req, res) => {
@@ -134,69 +159,120 @@ app.post("/updateprofile", async (req, res) => {
 	}
 	const userdetails = await userdatamodel.findOne({ email });
 
-	res.render("editprofile", {loginstatus: req.session.status,adminstatus: false,userdetails: userdetails,mobileexist: false,updatedstatus: true});
+	res.render("editprofile", {
+		loginstatus: req.session.status,
+		adminstatus: false,
+		userdetails: userdetails,
+		mobileexist: false,
+		updatedstatus: true,
+	});
 });
 
 app.get("/vegetables", async (req, res) => {
 	const vegetables = await vegetablesmodel.find();
 	const alertMessage = req.session.alertMessage;
-    req.session.alertMessage = null;
-	res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
+	req.session.alertMessage = null;
+	res.render("vegetables", {
+		vegetables: vegetables,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
 });
 
 app.get("/flours", async (req, res) => {
 	const flours = await floursmodel.find();
 	const alertMessage = req.session.alertMessage;
-    req.session.alertMessage = null;
-	res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
+	req.session.alertMessage = null;
+	res.render("flours", {
+		flours: flours,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
 });
 
 app.get("/rice", async (req, res) => {
 	const rice = await ricemodel.find();
 	const alertMessage = req.session.alertMessage;
-    req.session.alertMessage = null;
-	res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage});
+	req.session.alertMessage = null;
+	res.render("rice", {
+		rice: rice,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+app.get("/coffee-tea-sugar", async (req, res) => {
+	const coffee = await coffeemodel.find();
+	console.log(coffee);
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("coffee", {
+		coffee: coffee,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
 });
 
-app.post('/add-to-cart', async (req, res) => {
-    const { id, quantity, price, name } = req.body;
+app.post("/add-to-cart", async (req, res) => {
+	const { id, quantity, price, name } = req.body;
 	const useremail = req.session.email;
 
-	if(req.session.status){
+	if (req.session.status) {
 		try {
-			await cartmodel.create({email: useremail,itemid: id,itemname: name,itemquantity: quantity,itemquantitylevel: 1,itemprice: price});
+			await cartmodel.create({
+				email: useremail,
+				itemid: id,
+				itemname: name,
+				itemquantity: quantity,
+				itemquantitylevel: 1,
+				itemprice: price,
+			});
 			req.session.alertMessage = "Item added to cart";
-	
 		} catch (error) {
 			console.error("Error adding item to cart:", error);
-			res.status(500).send("An error occurred while adding the item to the cart.");
+			res
+				.status(500)
+				.send("An error occurred while adding the item to the cart.");
 			return;
 		}
-	}else{
-		return res.render("login", {signupstatus: false,loginerror: false,adminstatus: false});
+	} else {
+		return res.render("login", {
+			signupstatus: false,
+			loginerror: false,
+			adminstatus: false,
+		});
 	}
-    const refererUrl = req.headers.referer;
-    res.redirect(refererUrl);
+	const refererUrl = req.headers.referer;
+	res.redirect(refererUrl);
 });
 
-
-app.get('/mycart',async(req,res)=>{
+app.get("/mycart", async (req, res) => {
 	const useremail = req.session.email;
-	const cartdata = await cartmodel.find({email : useremail});
-	res.render("mycart",{loginstatus : req.session.status,adminstatus : false,cartdata : cartdata});
+	const cartdata = await cartmodel.find({ email: useremail });
+	res.render("mycart", {
+		loginstatus: req.session.status,
+		adminstatus: false,
+		cartdata: cartdata,
+	});
 });
 
-app.post('/deleteitem', async (req, res) => {
-    const { itemid } = req.body;
-    const useremail = req.session.email; 
+app.post("/deleteitem", async (req, res) => {
+	const { itemid } = req.body;
+	const useremail = req.session.email;
 
-    try {
-		const result = await cartmodel.findOneAndDelete({ _id: itemid, email: useremail });
-        res.redirect('/mycart');
-    } catch (error) {
-        console.error('Error deleting item:', error);
-        return res.status(500).json({ error: 'Internal server error.' });
-    }
+	try {
+		const result = await cartmodel.findOneAndDelete({
+			_id: itemid,
+			email: useremail,
+		});
+		res.redirect("/mycart");
+	} catch (error) {
+		console.error("Error deleting item:", error);
+		return res.status(500).json({ error: "Internal server error." });
+	}
 });
 
 app.get("/logout", (req, res) => {
