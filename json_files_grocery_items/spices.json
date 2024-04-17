@@ -1,0 +1,140 @@
+[
+	{
+		"name": "Coriander Seeds/ ధనియాలు",
+		"quantity": "100gm",
+		"price": 69,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40290733_1-bubble-organic-coriander-seed-brown-rich-in-fibre-nutrients-premium.jpg"
+	},
+	{
+		"name": "Mustard Seeds/ఆవాలు ",
+		"quantity": "200gm",
+		"price": 80,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40297640_1-bharat-bazaar-mustard-seed-100-pure-no-added-colours.jpg"
+	},
+	{
+		"name": "Fenugreek Seeds/ మెంటిలు",
+		"quantity": "100gm",
+		"price": 45,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40009421_9-organic-tattva-fenugreek.jpg"
+	},
+	{
+		"name": "Peepercorn/ మిరియాలు",
+		"quantity": "100gm",
+		"price": 49,
+		"imageUrl": "https://m.media-amazon.com/images/I/71HLU6-3P2L._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Cumin Seeds/జీలకర్ర ",
+		"quantity": "250gm",
+		"price": 139,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40297635_1-bharat-bazaar-cumin-seeds-100-pure-no-added-colours.jpg"
+	},
+	{
+		"name": "Red Chilli Powder/ఎర్ర కారం పొడి ",
+		"quantity": "250gm",
+		"price": 300,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40289505_1-hamdard-khaalis-red-chilli-powder.jpg"
+	},
+	{
+		"name": " Kashmiri Red Chilli Powder/కాశ్మీరీ ఎర్ర కారం పొడి ",
+		"quantity": "100gm",
+		"price": 82,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40168651_6-brahmins-kashmiri-chilly-powder.jpg"
+	},
+	{
+		"name": "Tamirind/చింతపండు ",
+		"quantity": "1kg",
+		"price": 259,
+		"imageUrl": "https://m.media-amazon.com/images/I/71lsY1v3HcL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Salt/ఉప్పు ",
+		"quantity": "1kg",
+		"price": 25,
+		"imageUrl": "https://m.media-amazon.com/images/I/61OmhTHojpL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Asafoetida/ఇంగువ ",
+		"quantity": "100gm",
+		"price": 199,
+		"imageUrl": "https://images-cdn.ubuy.co.in/645fab44b001e846e9203cac-inner-flame-premium-asafoetida-hing.jpg"
+	},
+	{
+		"name": "Sesame seeds/నువ్వులు ",
+		"quantity": "500gm",
+		"price": 165,
+		"imageUrl": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/puotzh1qjqlqjstordv9.jpg"
+	},
+	{
+		"name": "Turmaric Powder/పసుపు పొడి ",
+		"quantity": "25gm",
+		"price": 53.5,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40285185_1-dhani-pure-turmerichaldi-powder-100-natural-no-artificial-colours-preservatives.jpg"
+	},
+	{
+		"name": "Baking Soda/వంట సోడా ",
+		"quantity": "100gm",
+		"price": 30,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40198307-2_2-tata-i-shakti-cooking-soda.jpg"
+	},
+	{
+		"name": "Cardamom/ఏలకులు ",
+		"quantity": "150gm",
+		"price": 349,
+		"imageUrl": "https://m.media-amazon.com/images/I/71VEBtPnfGL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Cinnamon/దాల్చిన చెక్క ",
+		"quantity": "250gm",
+		"price": 199,
+		"imageUrl": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/91b3ca39f6d44a9fb262bc58e1ad10ff.jpg"
+	},
+	{
+		"name": "Ajwain/వాము ",
+		"quantity": "100gm",
+		"price": 59,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40311564_1-notlih-whole-ajwaincarom-seeds.jpg"
+	},
+	{
+		"name": "Dry Ginger/సొంతి ",
+		"quantity": "100gm",
+		"price": 49,
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40308395_1-fr-products-dry-ginger-powder.jpg"
+	},
+	{
+		"name": "Coarse pepper/ముతక మిరియాలు ",
+		"quantity": "100gm",
+		"price": 50,
+		"imageUrl": "https://www.justgoodfood.shop/cdn/shop/products/blackpepperpwdr.png?v=1680004363&width=416"
+	},
+	{
+		"name": "Clove/లవంగాలు ",
+		"quantity": "100gm",
+		"price": 167,
+		"imageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/5/YS/ZH/SN/310912/whole-cloves.png"
+	},
+	{
+		"name": "Bay Leaves/తేజ పత్తా ",
+		"quantity": "250gm",
+		"price": 192,
+		"imageUrl": "https://mlfxqaouviwr.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://www.health-fields.com/wp-content/uploads/2020/07/organic-bay-leaves.jpg"
+	},
+	{
+		"name": "Dried Red Chilli/మిర్చి ",
+		"quantity": "500gm",
+		"price": 95,
+		"imageUrl": "https://mlfxqaouviwr.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://www.health-fields.com/wp-content/uploads/2020/07/organic-dried-red-chilli.jpg"
+	},
+	{
+		"name": "Nutmeg/జాజికాయ ",
+		"quantity": "250gm",
+		"price": 399,
+		"imageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/5/WC/RN/BM/310912/whole-nutmeg-500x500.png"
+	},
+	{
+		"name": "Vinegar/వెనిగర్ ",
+		"quantity": "1L",
+		"price": 200,
+		"imageUrl": "https://m.media-amazon.com/images/I/61C2U6ZFGAL.jpg"
+	}
+]

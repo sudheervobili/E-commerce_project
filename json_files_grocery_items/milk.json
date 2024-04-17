@@ -1,0 +1,38 @@
+[
+	{
+		"name": "Organic Cow Milk/సేంద్రీయ ఆవు పాలు",
+		"price": 60,
+		"quantity": "1L",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40262036_2-akshayakalpa-organic-cow-milk-pasteurized-homogenized-pure-natural.jpg"
+	},
+	{
+		"name": "Milk/పాలు",
+		"price": 35,
+		"quantity": "500ml",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40047739_4-heritage-full-cream-milk.jpg"
+	},
+	{
+		"name": "Panner/పన్నీర్",
+		"price": 80,
+		"quantity": "200gm",
+		"imageUrl": "https://m.media-amazon.com/images/I/81hD14MN91L.jpg"
+	},
+	{
+		"name": "Cheese/జున్ను",
+		"price": 95,
+		"quantity": "200gm",
+		"imageUrl": "https://m.media-amazon.com/images/I/61+AzywctoL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "Butter Milk/మజ్జిగ",
+		"price": 40,
+		"quantity": "500ml",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40300978_2-heritage-spiced-butter-milk-supports-digestion.jpg"
+	},
+	{
+		"name": "Lassie/లస్సీ",
+		"price": 35,
+		"quantity": "500ml",
+		"imageUrl": "https://5.imimg.com/data5/SELLER/Default/2021/4/ZF/SK/AE/127487514/verka-low-fat-lassi-500x500.jpg"
+	}
+]

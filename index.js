@@ -9,7 +9,10 @@ const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
 const cartmodel = require("./models/cart");
 const coffeemodel = require("./models/coffees");
-
+const spicesmodel = require("./models/spices");
+const snacksmodel = require("./models/snacks");
+const milkmodel = require("./models/milks");
+const saucesmodel = require("./models/sauces");
 const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,7 +62,6 @@ app.get("/login", (req, res) => {
 app.get("/adminlogin", (req, res) => {
 	res.render("adminlogin", { loginerror: false, adminstatus: false });
 });
-
 
 app.post("/signup", async (req, res) => {
 	const { name, email, mobile, address, password } = req.body;
@@ -205,7 +207,7 @@ app.get("/rice", async (req, res) => {
 	});
 });
 
-app.get('/coffee',async(req,res)=>{
+app.get("/coffee", async (req, res) => {
 	const coffee = await coffeemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -215,8 +217,53 @@ app.get('/coffee',async(req,res)=>{
 		adminstatus: false,
 		alertMessage: alertMessage,
 	});
-})
+});
+app.get("/spices", async (req, res) => {
+	const spices = await spicesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("spices", {
+		spices: spices,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage, // Corrected typo here
+	});
+});
+app.get("/pasta-noodles-snack", async (req, res) => {
+	const snacks = await snacksmodel.find();
 
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("snacks", {
+		snacks: snacks,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage, // Corrected typo here
+	});
+});
+app.get("/milk-nondiary", async (req, res) => {
+	const milk = await milkmodel.find();
+
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("milk", {
+		milk: milk,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+app.get("/sauces-masala-paste", async (req, res) => {
+	const sauces = await saucesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("sauces", {
+		sauces: sauces,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
 app.post("/add-to-cart", async (req, res) => {
 	const { id, quantity, price, name } = req.body;
 	const useremail = req.session.email;
