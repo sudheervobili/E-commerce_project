@@ -1,0 +1,38 @@
+[
+	{
+		"name": "Pasta/పాస్తా",
+		"price": 199,
+		"quantity": "500gm",
+		"imageUrl": "https://m.media-amazon.com/images/I/61Km7SRy5FL.jpg"
+	},
+	{
+		"name": "Vermicelli/సేమియా",
+		"price": 75,
+		"quantity": "850gm",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40307596_1-disano-vermicelli-plain-made-from-wheat.jpg"
+	},
+	{
+		"name": "Flattened Rice/అటుకులు",
+		"price": 83,
+		"quantity": "1kg",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40216186_2-vijay-thick-poha.jpg"
+	},
+	{
+		"name": "Noodles/నూడుల్స్",
+		"price": 149,
+		"quantity": "500gm",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40141484_2-desi-hakka-noodles-veg.jpg"
+	},
+	{
+		"name": "Quinoa/క్వినోవా",
+		"price": 199,
+		"quantity": "500gm",
+		"imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTmRYgtnD8FMZjk07dYOeiQnj6jTjhX17gQQsP3JDBg&s"
+	},
+	{
+		"name": "Soya-Chunks/సోయా ముక్కలు",
+		"price": 156,
+		"quantity": "1kg",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/257382-2_5-nutrela-soya-chunks.jpg"
+	}
+]

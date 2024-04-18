@@ -11,7 +11,7 @@ const cartmodel = require("./models/cart");
 const coffeemodel = require("./models/coffees");
 const oilmodel = require("./models/oils");
 const cleaningmodel = require("./models/cleaners");
-const hygienemodel = require("./models/hygienes");
+const hygienemodel = require("./models/hygiene");
 const toiletariesmodel = require("./models/toiletaries");
 const disposablesmodel = require("./models/disposables");
 
