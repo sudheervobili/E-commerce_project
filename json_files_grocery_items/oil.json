@@ -1,0 +1,44 @@
+[
+    {
+        "name": "ghee / నెయ్యి",
+        "price": 375,
+        "quantity": "500ml",
+        "imageUrl": "https://www.bigbasket.com/media/uploads/p/l/252425_7-grb-ghee.jpg"
+    },
+    {
+        "name": "butter / వెన్న",
+        "price": 55 ,
+        "quantity": "100g",
+        "imageUrl": "https://5.imimg.com/data5/PU/UB/MY-19432744/amul-butter-100g.png"
+    },
+    {
+        "name": "groundnut oil / వేరుశెనగ నూనె",
+        "price": 180 ,
+        "quantity": "1 litre",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE-QmMNxiyqJbQpu7wMiOq23xev-R8Izz4m5FSNWuCmA&s"
+    },
+    {
+        "name": "mustard oil / ఆవనూనె",
+        "price": 148,
+        "quantity": "1 litre",
+        "imageUrl": "https://m.media-amazon.com/images/I/71wVU7pgwAL.jpg"
+    },
+    {
+        "name": "coconut oil / కొబ్బరి నూనే",
+        "price": 280,
+        "quantity": "1 litre",
+        "imageUrl": "https://m.media-amazon.com/images/I/816N3AIY0UL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "name": "sesame oil / నువ్వుల నూనె ",
+        "price": 375 ,
+        "quantity": "1 litre",
+        "imageUrl": "https://www.jiomart.com/images/product/original/rvobyjfnf2/anjali-gingelly-sesame-oil-3-litre-pouch-pack-of-3-legal-images-orvobyjfnf2-p591691290-5-202205290516.jpg?im=Resize=(420,420)"
+    },
+    {
+        "name": "palm oil / పామాయిల్‌",
+        "price": 98,
+        "quantity": "1 litre",
+        "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2021/7/GU/UR/LF/134036991/freedom-oil-jpg-500x500.jpg"
+    }
+]

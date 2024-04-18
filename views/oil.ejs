@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cofee-tea-sugar Items</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		/>
+		<style>
+			/* Custom CSS for rice cards */
+			.card {
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s ease-in-out;
+				height: 100%;
+			}
+
+			.card:hover {
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			.card img {
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+				width: 100%; /* Make sure image fills the container */
+				height: 200px; /* Fixed height for all images */
+				object-fit: contain; /* Ensure entire image fits within the container */
+			}
+
+			.card-body {
+				padding: 10px 20px;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.card-title {
+				font-size: 1.2rem;
+				margin-bottom: auto; /* Push other elements to the top */
+			}
+
+			.card-text {
+				color: #666;
+				margin-bottom: auto; /* Push other elements to the top */
+			}
+
+			.btn {
+				margin-top: auto; /* Push button to the bottom */
+				text-align: center; /* Center button */
+			}
+
+			.btn button {
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 4px;
+				padding: 6px 12px;
+				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
+			}
+
+			.btn button:hover {
+				background-color: #0056b3;
+			}
+
+			.btn i {
+				margin-right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<%- include('navbar') %>
+		<% if (alertMessage) { %>
+			<script>
+				alert('item added to cart');
+			</script>
+		<% } %>
+
+		<h1 style="text-align: center;">Oils/Fats</h1><br><br>
+		<div class="container h-100">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<% for (let i = 0; i < oil.length; i++) { %>
+				<div class="col">
+					<div class="card h-100">
+						<img
+							class="card-img-top"
+							src="<%= oil[i].imageUrl %>"
+							alt="<%= oil[i].name %>"
+						/>
+						<div class="card-body">
+							<h2 class="card-title text-center"><%= oil[i].name %></h2>
+							<p class="card-text text-center">
+								Quantity: <%= oil[i].quantity %>
+							</p>
+							<h5 class="text-center">$<%= oil[i].price.toFixed(2) %></h5>
+							<form action="/add-to-cart" method="POST">
+								<input type="hidden" name="id" value="<%= oil[i]._id %>" />
+								<input type="hidden" name="quantity" value="<%= oil[i].quantity %>" />
+								<input type="hidden" name="price" value="<%= oil[i].price.toFixed(2) %>" />
+								<input type="hidden" name="name" value="<%= oil[i].name %>" />
+	
+								<div class="btn">
+									<button type="submit">
+										Add <i class="fas fa-cart-plus"></i>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+
+		<script>
+			function addToCart(riceid) {
+				const quantity = document.getElementById(`quantity_${riceid}`).value;
+				console.log(
+					`Adding ${quantity} units of rice ID ${riceid} to the cart.`
+				);
+			}
+			function validateQuantity(inputElement) {
+				if (inputElement.value < inputElement.min) {
+					inputElement.value = inputElement.min;
+				}
+			}
+		</script>
+	</body>
+</html>

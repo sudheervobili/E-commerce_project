@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Buffy Plates",
+        "price": 150,
+        "quantity": "1 (set of 30)",
+        "imageUrl": "https://m.media-amazon.com/images/I/719n0AvjH5S.jpg"
+    },
+    {
+        "name": "Water Glasses disposables",
+        "price": 155 ,
+        "quantity": "1 (set of 30)",
+        "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2021/9/WT/VO/FE/42241792/2-2gm-pp-glass.jpg"
+    },
+    {
+        "name": "Tea Cups",
+        "price": 80 ,
+        "quantity": "1 (set of 20)",
+        "imageUrl": "https://m.media-amazon.com/images/I/81AHlq3cCTL._AC_UF894,1000_QL80_.jpg"
+    }
+]

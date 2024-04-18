@@ -9,6 +9,11 @@ const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
 const cartmodel = require("./models/cart");
 const coffeemodel = require("./models/coffees");
+const oilmodel = require("./models/oils");
+const cleaningmodel = require("./models/cleaners");
+const hygienemodel = require("./models/hygienes");
+const toiletariesmodel = require("./models/toiletaries");
+const disposablesmodel = require("./models/disposables");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -215,7 +220,67 @@ app.get('/coffee',async(req,res)=>{
 		adminstatus: false,
 		alertMessage: alertMessage,
 	});
-})
+});
+
+app.get('/oil',async(req,res)=>{
+	const oil = await oilmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("oil", {
+		oil: oil,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+
+app.get('/cleaning-supplies',async(req,res)=>{
+	const cleaners = await cleaningmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("cleaners", {
+		cleaners: cleaners,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+
+app.get('/personalhygiene',async(req,res)=>{
+	const hygienes = await hygienemodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("hygienes", {
+		hygienes: hygienes,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+
+app.get('/toiletaries',async(req,res)=>{
+	const toiletaries = await toiletariesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("toiletaries", {
+		toiletaries: toiletaries,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
+
+app.get('/disposables',async(req,res)=>{
+	const disposables = await disposablesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	res.render("disposables", {
+		disposables: disposables,
+		loginstatus: req.session.status,
+		adminstatus: false,
+		alertMessage: alertMessage,
+	});
+});
 
 app.post("/add-to-cart", async (req, res) => {
 	const { id, quantity, price, name } = req.body;

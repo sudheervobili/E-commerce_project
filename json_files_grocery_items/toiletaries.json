@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Toilet Paper",
+        "price": 150 ,
+        "quantity": "1",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Toiletpapier_%28Gobran111%29.jpg/1200px-Toiletpapier_%28Gobran111%29.jpg"
+    },
+    {
+        "name": "Toilet Brush",
+        "price": 126 ,
+        "quantity": "1",
+        "imageUrl": "https://www.bigbasket.com/media/uploads/p/l/40050934_1-j-son-toilet-brush-big.jpg"
+    },
+    {
+        "name": "Trash Can",
+        "price": 200,
+        "quantity": "1",
+        "imageUrl": "https://m.media-amazon.com/images/I/61t1TFy38gL._AC_UL320_.jpg"
+    },
+    {
+        "name": "Harpic",
+        "price": 200,
+        "quantity": "1",
+        "imageUrl": "https://m.media-amazon.com/images/I/61fQA+kazoL.jpg"
+    }
+]

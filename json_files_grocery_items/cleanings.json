@@ -1,0 +1,85 @@
+[
+	{
+		"name": "Scrubing sponges",
+		"price": 20,
+		"quantity": "1",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/40008476_11-scotch-brite-scrub-sponge-small.jpg"
+	},
+	{
+		"name": "microfiber cloths",
+		"price": 180,
+		"quantity": "2",
+		"imageUrl": "https://www.jiomart.com/images/product/original/rvgc0pnzgw/mast-multicolor-microfiber-cloth-pack-of-2-color-blue-size-40-x-40-cm-product-images-orvgc0pnzgw-p598877987-2-202302271021.jpg?im=Resize=(420,420)"
+	},{
+		"name": "microfiber cloths",
+		"price": 200,
+		"quantity": "4",
+		"imageUrl": "https://www.jiomart.com//images/product/240x240/rv4dq6onvu/microfiber-cloth-product-images-orv4dq6onvu-p594201526-0-202210011506.png"
+	},
+	{
+		"name": "oven cleaner",
+		"price": 1300,
+		"quantity": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/71YYxe8xkBS._AC_UF1000,1000_QL80_.jpg"
+	},
+    {
+		"name": "oven cleaner",
+		"price": 2000,
+		"quantity": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/61Mrhj0pudL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "stainless steel cleaner",
+		"price": "360",
+		"quantity": "1 (500ml)",
+		"imageUrl": "https://m.media-amazon.com/images/I/61xntVVCrIL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "dish washing soap",
+		"price": "20",
+		"quantity": "1",
+		"imageUrl": "https://driftbasket.com/wp-content/uploads/2020/02/vim-dishwash-bar-85-grams.jpg"
+	},
+	{
+		"name": "garbage bag",
+		"price": "200",
+		"quantity": "6",
+		"imageUrl": "https://primelife.in/cdn/shop/products/41Se1EjcrkS_800x800.jpg?v=1626678451"
+	},
+	{
+		"name": "flour cleaner",
+		"price": "100",
+		"quantity": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/61W8NHxqS8L._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "surf excel",
+		"price": "630",
+		"quantity": "5kg",
+		"imageUrl": "https://m.media-amazon.com/images/I/61IxGNC3xPL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "drier sheets",
+		"price": "450",
+		"quantity": "1",
+		"imageUrl": "https://5.imimg.com/data5/SELLER/Default/2021/12/AX/FB/ZW/94969265/bounce-dryer-sheets-500x500.jpg"
+	},
+	{
+		"name": "glass cleaner",
+		"price": "106",
+		"quantity": "1",
+		"imageUrl": "https://www.bigbasket.com/media/uploads/p/xxl/263787-2_4-colin-cleaner-glass-household.jpg"
+	},
+	{
+		"name": "room freshner",
+		"price": "236",
+		"quantity": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/61HC6lCV0iL._AC_UF1000,1000_QL80_.jpg"
+	},
+	{
+		"name": "room freshner",
+		"price": "220",
+		"quantity": "1",
+		"imageUrl": "https://www.leefordonline.in/images/ProductImages/large/65619a5f6e037-1700895327.jpg"
+	}
+]
