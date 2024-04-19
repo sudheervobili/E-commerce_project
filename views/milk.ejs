@@ -127,17 +127,15 @@
 		</div>
 
 		<script>
-			function addToCart(milkid) {
-				const quantity = document.getElementById(`quantity_${milkid}`).value;
-				console.log(
-					`Adding ${quantity} units of vegetable ID ${milkid} to the cart.`
-				);
-			}
 			function validateQuantity(inputElement) {
 				if (inputElement.value < inputElement.min) {
 					inputElement.value = inputElement.min;
 				}
 			}
+			const clickButton = document.getElementById("btn-1");
+			clickButton.addEventListener("click", () => {
+				window.location.href = "/additem";
+			});
 		</script>
 	</body>
 </html>

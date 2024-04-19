@@ -137,17 +137,15 @@
 		</div>
 
 		<script>
-			function addToCart(spicesid) {
-				const quantity = document.getElementsByName("quantity")[spicesid].value;
-				console.log(
-					`Adding ${quantity} units of rice ID ${spicesid} to the cart.`
-				);
-			}
 			function validateQuantity(inputElement) {
 				if (inputElement.value < inputElement.min) {
 					inputElement.value = inputElement.min;
 				}
 			}
+			const clickButton = document.getElementById("btn-1");
+			clickButton.addEventListener("click", () => {
+				window.location.href = "/additem";
+			});
 		</script>
 	</body>
 </html>

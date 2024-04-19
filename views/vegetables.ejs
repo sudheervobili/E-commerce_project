@@ -77,10 +77,11 @@
 	</head>
 
 	<body>
-		<%- include('navbar') %> <% if (alertMessage) { %>
-		<script>
-			alert("item added to cart");
-		</script>
+		<%- include('navbar') %> 
+		<% if (alertMessage) { %>
+			<script>
+				alert("item added to cart");
+			</script>
 		<% } %>
 		<h1 style="text-align: center">Vegetables</h1>
 		<br /><br />
@@ -134,7 +135,7 @@
 					</div>
 				</div>
 				<% } %>
-				<!-- "+" symbol card -->
+				<% if(adminloginstatus) { %>
 				<div class="col">
 					<div class="card h-100">
 						<div class="card-body">
@@ -144,6 +145,7 @@
 						</div>
 					</div>
 				</div>
+				<% } %>
 			</div>
 		</div>
 

@@ -116,21 +116,29 @@
 					</div>
 				</div>
 				<% } %>
+				<% if(adminloginstatus) { %>
+					<div class="col">
+						<div class="card h-100">
+							<div class="card-body">
+								<div class="btn">
+									<button id="btn-1">+</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% } %>
 			</div>
 		</div>
-
 		<script>
-			function addToCart(riceid) {
-				const quantity = document.getElementById(`quantity_${riceid}`).value;
-				console.log(
-					`Adding ${quantity} units of rice ID ${riceid} to the cart.`
-				);
-			}
 			function validateQuantity(inputElement) {
 				if (inputElement.value < inputElement.min) {
 					inputElement.value = inputElement.min;
 				}
 			}
+			const clickButton = document.getElementById("btn-1");
+			clickButton.addEventListener("click", () => {
+				window.location.href = "/additem";
+			});
 		</script>
 	</body>
 </html>
