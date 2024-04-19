@@ -222,6 +222,8 @@ app.post('/additem',async(req,res)=>{
 	res.render("adminpage", { adminstatus: true, loginstatus: false });
 });
 
+// hello
+
 app.get("/flours", async (req, res) => {
 	const email = req.session.email;
 	const flours = await floursmodel.find();
