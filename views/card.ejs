@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Card Layout with + Button</title>
+		<style>
+			/* Custom CSS for card with + button */
+			.card {
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s ease-in-out;
+				height: 200px; /* Adjust card height */
+			}
+
+			.card:hover {
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			.card-body {
+				padding: 20px; /* Adjust padding */
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.btn button {
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 50%; /* Makes it circular */
+				width: 50px; /* Adjust button size */
+				height: 50px; /* Adjust button size */
+				font-size: 24px;
+				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
+			}
+
+			.btn button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="card">
+			<div class="card-body">
+				<div class="btn">
+					<button>+</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

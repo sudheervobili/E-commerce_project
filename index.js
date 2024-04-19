@@ -65,7 +65,6 @@ app.get("/adminlogin", (req, res) => {
 	res.render("adminlogin", { loginerror: false, adminstatus: false });
 });
 
-
 app.post("/signup", async (req, res) => {
 	const { name, email, mobile, address, password } = req.body;
 	const checkemail = await userdatamodel.findOne({ email: email });
@@ -210,7 +209,7 @@ app.get("/rice", async (req, res) => {
 	});
 });
 
-app.get('/coffee',async(req,res)=>{
+app.get("/coffee", async (req, res) => {
 	const coffee = await coffeemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -222,7 +221,7 @@ app.get('/coffee',async(req,res)=>{
 	});
 });
 
-app.get('/oil',async(req,res)=>{
+app.get("/oil", async (req, res) => {
 	const oil = await oilmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -234,7 +233,7 @@ app.get('/oil',async(req,res)=>{
 	});
 });
 
-app.get('/cleaning-supplies',async(req,res)=>{
+app.get("/cleaning-supplies", async (req, res) => {
 	const cleaners = await cleaningmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -246,7 +245,7 @@ app.get('/cleaning-supplies',async(req,res)=>{
 	});
 });
 
-app.get('/personalhygiene',async(req,res)=>{
+app.get("/personalhygiene", async (req, res) => {
 	const hygienes = await hygienemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -258,7 +257,7 @@ app.get('/personalhygiene',async(req,res)=>{
 	});
 });
 
-app.get('/toiletaries',async(req,res)=>{
+app.get("/toiletaries", async (req, res) => {
 	const toiletaries = await toiletariesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -270,7 +269,7 @@ app.get('/toiletaries',async(req,res)=>{
 	});
 });
 
-app.get('/disposables',async(req,res)=>{
+app.get("/disposables", async (req, res) => {
 	const disposables = await disposablesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
@@ -281,7 +280,9 @@ app.get('/disposables',async(req,res)=>{
 		alertMessage: alertMessage,
 	});
 });
-
+app.get("/additem", (req, res) => {
+	res.render("additem");
+});
 app.post("/add-to-cart", async (req, res) => {
 	const { id, quantity, price, name } = req.body;
 	const useremail = req.session.email;

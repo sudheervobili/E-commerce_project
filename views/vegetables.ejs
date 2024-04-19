@@ -2,7 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vegetable Items</title>
 		<link
@@ -86,7 +85,7 @@
 		<h1 style="text-align: center">Vegetables</h1>
 		<br /><br />
 		<div class="container h-100">
-			<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<% for (let i = 0; i < vegetables.length; i++) { %>
 				<div class="col">
 					<div class="card h-100">
@@ -135,6 +134,16 @@
 					</div>
 				</div>
 				<% } %>
+				<!-- "+" symbol card -->
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="btn">
+								<button id="btn-1">+</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -144,6 +153,10 @@
 					inputElement.value = inputElement.min;
 				}
 			}
+			const clickButton = document.getElementById("btn-1");
+			clickButton.addEventListener("click", () => {
+				window.location.href = "/additem";
+			});
 		</script>
 	</body>
 </html>
