@@ -99,36 +99,33 @@
 							<p class="card-text text-center">
 								Quantity: <%= spices[i].quantity %>
 							</p>
-							<% if (typeof spices[i].price === 'number') { %>
-							<h5 class="text-center">$<%= spices[i].price.toFixed(2) %></h5>
-							<% } else { %>
-							<h5 class="text-center">Price: N/A</h5>
-							<% } %>
-							<form action="/add-to-cart" method="POST">
-								<input type="hidden" name="id" value="<%= spices[i]._id %>" />
-								<input
-									type="hidden"
-									name="quantity"
-									value="<%= spices[i].quantity %>"
-								/>
-								<% if (typeof spices[i].price === 'number') { %>
-								<input
-									type="hidden"
-									name="price"
-									value="<%= spices[i].price.toFixed(2) %>"
-								/>
-								<% } %>
-								<input
-									type="hidden"
-									name="name"
-									value="<%= spices[i].name %>"
-								/>
-								<div class="btn">
-									<button type="submit">
+		
+							<h5 class="text-center">Rs <%= spices[i].price.toFixed(2) %></h5>
+	
+							<div class="d-flex justify-content-between align-items-center">
+								<form action="/update-vegetable/<%= spices[i]._id %>" method="GET">
+									<input type="hidden" name="<%= spices[i]._id %>">
+									<button type="submit" class="btn btn-secondary">
+										Update <i class="fas fa-edit"></i>
+									</button>
+								</form>
+								<form action="/delete-item" method="POST">
+									<input type="hidden" name="itemid" value="<%= spices[i]._id %>">
+									<input type="hidden" name="itemcategory" value="spices">
+									<button type="submit" class="btn btn-danger">
+										Delete <i class="fas fa-trash-alt"></i>
+									</button>
+								</form>
+								<form action="/add-to-cart" method="POST">
+									<input type="hidden" name="id" value="<%= spices[i]._id %>"/>
+									<input type="hidden" name="quantity" value="<%= spices[i].quantity %>"/>
+									<input type="hidden" name="price" value="<%= spices[i].price.toFixed(2) %>"/>
+									<input type="hidden" name="name" value="<%= spices[i].name %>"/>
+									<button type="submit" class="btn btn-primary">
 										Add <i class="fas fa-cart-plus"></i>
 									</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

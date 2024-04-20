@@ -99,30 +99,30 @@
 								Quantity: <%= flours[i].quantity %>
 							</p>
 							<h5 class="text-center">$<%= flours[i].price.toFixed(2) %></h5>
-							<form action="/add-to-cart" method="POST">
-								<input type="hidden" name="id" value="<%= flours[i]._id %>" />
-								<input
-									type="hidden"
-									name="quantity"
-									value="<%= flours[i].quantity %>"
-								/>
-								<input
-									type="hidden"
-									name="price"
-									value="<%= flours[i].price.toFixed(2) %>"
-								/>
-								<input
-									type="hidden"
-									name="name"
-									value="<%= flours[i].name %>"
-								/>
-
-								<div class="btn">
-									<button type="submit">
+							<div class="d-flex justify-content-between align-items-center">
+								<form action="/update-vegetable/<%= flours[i]._id %>" method="GET">
+									<input type="hidden" name="<%= flours[i]._id %>">
+									<button type="submit" class="btn btn-secondary">
+										Update <i class="fas fa-edit"></i>
+									</button>
+								</form>
+								<form action="/delete-item" method="POST">
+									<input type="hidden" name="itemid" value="<%= flours[i]._id %>">
+									<input type="hidden" name="itemcategory" value="flours">
+									<button type="submit" class="btn btn-danger">
+										Delete <i class="fas fa-trash-alt"></i>
+									</button>
+								</form>
+								<form action="/add-to-cart" method="POST">
+									<input type="hidden" name="id" value="<%= flours[i]._id %>"/>
+									<input type="hidden" name="quantity" value="<%= flours[i].quantity %>"/>
+									<input type="hidden" name="price" value="<%= flours[i].price.toFixed(2) %>"/>
+									<input type="hidden" name="name" value="<%= flours[i].name %>"/>
+									<button type="submit" class="btn btn-primary">
 										Add <i class="fas fa-cart-plus"></i>
 									</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

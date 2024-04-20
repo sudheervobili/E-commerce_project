@@ -141,7 +141,7 @@ app.post("/adminlogin", async (req, res) => {
 	if (email === "admin@gmail.com" && password === "123") {
 		req.session.email = email;
 		req.session.status = true;
-		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false });
+		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false,itemdeleted : false ,itemname : null});
 	} else {
 		res.render("adminlogin", { loginerror: true, adminstatus: false });
 	}
@@ -227,7 +227,7 @@ app.post('/additem',async(req,res)=>{
 		const newitem = new disposablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
 		await newitem.save();
 	}
-	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true });
+	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true ,itemdeleted : false ,itemname : null});
 });
 
 app.get("/flours", async (req, res) => {
@@ -444,6 +444,14 @@ app.get("/mycart", async (req, res) => {
 	});
 });
 
+app.post('/checkout',async(req,res)=>{
+	const {itemName,itemQuantity,itemQuantityLevel,itemPrice,itemTotal} = req.body;
+	console.log(itemName,itemQuantity,itemQuantityLevel,itemPrice,itemTotal);
+	const email = req.session.email;
+	const cartdata = await cartmodel.find({email : email});
+	// res.render("checkout",{data : cartdata});
+})
+
 app.post("/deleteitem", async (req, res) => {
 	const { itemid } = req.body;
 	const useremail = req.session.email;
@@ -457,6 +465,20 @@ app.post("/deleteitem", async (req, res) => {
 	} catch (error) {
 		console.error("Error deleting item:", error);
 		return res.status(500).json({ error: "Internal server error." });
+	}
+});
+
+app.post('/delete-item',async(req,res)=>{
+	const {itemid,itemcategory} = req.body;
+	const Model = mongoose.model(itemcategory);
+	const itemData = await Model.findOne({_id : itemid});
+	const email = req.session.email;
+	if(email === 'admin@gmail.com'){
+		const deletedItem = await Model.findByIdAndDelete(itemid);
+		if (!deletedItem) {
+			return res.status(404).json({ message: "Item not found" });
+		}
+		res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : true , itemname : itemData.itemname});
 	}
 });
 

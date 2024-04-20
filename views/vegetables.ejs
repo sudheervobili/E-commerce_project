@@ -85,70 +85,131 @@
 		<% } %>
 		<h1 style="text-align: center">Vegetables</h1>
 		<br /><br />
-		<div class="container h-100">
-			<div class="row row-cols-1 row-cols-md-4 g-4">
-				<% for (let i = 0; i < vegetables.length; i++) { %>
-				<div class="col">
-					<div class="card h-100">
-						<img
-							class="card-img-top"
-							src="<%= vegetables[i].imageUrl %>"
-							alt="<%= vegetables[i].name %>"
-						/>
-						<div class="card-body">
-							<h2 class="card-title text-center"><%= vegetables[i].name %></h2>
-							<p class="card-text text-center">
-								Quantity: <%= vegetables[i].quantity %>
-							</p>
-							<h5 class="text-center">
-								Rs <%= vegetables[i].price.toFixed(2) %>
-							</h5>
-							<form action="/add-to-cart" method="POST">
-								<input
-									type="hidden"
-									name="id"
-									value="<%= vegetables[i]._id %>"
-								/>
-								<input
-									type="hidden"
-									name="quantity"
-									value="<%= vegetables[i].quantity %>"
-								/>
-								<input
-									type="hidden"
-									name="price"
-									value="<%= vegetables[i].price.toFixed(2) %>"
-								/>
-								<input
-									type="hidden"
-									name="name"
-									value="<%= vegetables[i].name %>"
-								/>
-
-								<div class="btn">
-									<button type="submit">
-										Add <i class="fas fa-cart-plus"></i>
-									</button>
+		<% if(adminstatus) { %>
+			<div class="container h-100">
+				<div class="row row-cols-1 row-cols-md-4 g-4">
+					<% for (let i = 0; i < vegetables.length; i++) { %>
+					<div class="col">
+						<div class="card h-100">
+							<img
+								class="card-img-top"
+								src="<%= vegetables[i].imageUrl %>"
+								alt="<%= vegetables[i].name %>"
+							/>
+							<div class="card-body">
+								<h2 class="card-title text-center"><%= vegetables[i].name %></h2>
+								<p class="card-text text-center">
+									Quantity: <%= vegetables[i].quantity %>
+								</p>
+								<h5 class="text-center">
+									Rs <%= vegetables[i].price.toFixed(2) %>
+								</h5>
+								<div class="d-flex justify-content-between align-items-center">
+									<form action="/update-vegetable/<%= vegetables[i]._id %>" method="GET">
+										<input type="hidden" name="<%= vegetables[i]._id %>">
+										<button type="submit" class="btn btn-secondary">
+											Update <i class="fas fa-edit"></i>
+										</button>
+									</form>
+									<form action="/delete-item" method="POST">
+										<input type="hidden" name="itemid" value="<%= vegetables[i]._id %>">
+										<input type="hidden" name="itemcategory" value="vegetables">
+										<button type="submit" class="btn btn-danger">
+											Delete <i class="fas fa-trash-alt"></i>
+										</button>
+									</form>
+									<form action="/add-to-cart" method="POST">
+										<input type="hidden" name="id" value="<%= vegetables[i]._id %>"/>
+										<input type="hidden" name="quantity" value="<%= vegetables[i].quantity %>"/>
+										<input type="hidden" name="price" value="<%= vegetables[i].price.toFixed(2) %>"/>
+										<input type="hidden" name="name" value="<%= vegetables[i].name %>"/>
+										<button type="submit" class="btn btn-primary">
+											Add <i class="fas fa-cart-plus"></i>
+										</button>
+									</form>
 								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<% } %>
-				<% if(adminloginstatus) { %>
-				<div class="col">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="btn">
-								<button id="btn-1">Add a new item</button>
 							</div>
 						</div>
 					</div>
+					<% } %>
+					<% if(adminloginstatus) { %>
+					<div class="col">
+						<div class="card h-100">
+							<div class="card-body">
+								<div class="btn">
+									<button id="btn-1">Add a new item</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% } %>
 				</div>
-				<% } %>
 			</div>
-		</div>
-
+		<% }else { %>
+			<div class="container h-100">
+				<div class="row row-cols-1 row-cols-md-4 g-4">
+					<% for (let i = 0; i < vegetables.length; i++) { %>
+					<div class="col">
+						<div class="card h-100">
+							<img
+								class="card-img-top"
+								src="<%= vegetables[i].imageUrl %>"
+								alt="<%= vegetables[i].name %>"
+							/>
+							<div class="card-body">
+								<h2 class="card-title text-center"><%= vegetables[i].name %></h2>
+								<p class="card-text text-center">
+									Quantity: <%= vegetables[i].quantity %>
+								</p>
+								<h5 class="text-center">
+									Rs <%= vegetables[i].price.toFixed(2) %>
+								</h5>
+								<form action="/add-to-cart" method="POST">
+									<input
+										type="hidden"
+										name="id"
+										value="<%= vegetables[i]._id %>"
+									/>
+									<input
+										type="hidden"
+										name="quantity"
+										value="<%= vegetables[i].quantity %>"
+									/>
+									<input
+										type="hidden"
+										name="price"
+										value="<%= vegetables[i].price.toFixed(2) %>"
+									/>
+									<input
+										type="hidden"
+										name="name"
+										value="<%= vegetables[i].name %>"
+									/>
+	
+									<div class="btn">
+										<button type="submit">
+											Add <i class="fas fa-cart-plus"></i>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<% } %>
+					<% if(adminloginstatus) { %>
+					<div class="col">
+						<div class="card h-100">
+							<div class="card-body">
+								<div class="btn">
+									<button id="btn-1">Add a new item</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		<% } %>
 		<script>
 			function validateQuantity(inputElement) {
 				if (inputElement.value < inputElement.min) {

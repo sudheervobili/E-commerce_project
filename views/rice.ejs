@@ -100,18 +100,30 @@
 								Quantity: <%= rice[i].quantity %>
 							</p>
 							<h5 class="text-center">$<%= rice[i].price.toFixed(2) %></h5>
-							<form action="/add-to-cart" method="POST">
-								<input type="hidden" name="id" value="<%= rice[i]._id %>" />
-								<input type="hidden" name="quantity" value="<%= rice[i].quantity %>" />
-								<input type="hidden" name="price" value="<%= rice[i].price.toFixed(2) %>" />
-								<input type="hidden" name="name" value="<%= rice[i].name %>" />
-	
-								<div class="btn">
-									<button type="submit">
+							<div class="d-flex justify-content-between align-items-center">
+								<form action="/update-vegetable/<%= rice[i]._id %>" method="GET">
+									<input type="hidden" name="<%= rice[i]._id %>">
+									<button type="submit" class="btn btn-secondary">
+										Update <i class="fas fa-edit"></i>
+									</button>
+								</form>
+								<form action="/delete-item" method="POST">
+									<input type="hidden" name="itemid" value="<%= rice[i]._id %>">
+									<input type="hidden" name="itemcategory" value="rice">
+									<button type="submit" class="btn btn-danger">
+										Delete <i class="fas fa-trash-alt"></i>
+									</button>
+								</form>
+								<form action="/add-to-cart" method="POST">
+									<input type="hidden" name="id" value="<%= rice[i]._id %>"/>
+									<input type="hidden" name="quantity" value="<%= rice[i].quantity %>"/>
+									<input type="hidden" name="price" value="<%= rice[i].price.toFixed(2) %>"/>
+									<input type="hidden" name="name" value="<%= rice[i].name %>"/>
+									<button type="submit" class="btn btn-primary">
 										Add <i class="fas fa-cart-plus"></i>
 									</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
