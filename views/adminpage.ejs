@@ -53,6 +53,11 @@
 	</head>
 	<body>
 		<%- include('navbar') %>
+        <% if(newitem) {  %>
+            <script>
+                alert('new item added !');
+            </script>
+        <% } %>
 		<div class="card-container">
             <div class="card">
                 <a href="/vegetables"><img src="https://img.freepik.com/free-photo/healthy-vegetables-wooden-table_1150-38014.jpg" alt="Card Image"></a>

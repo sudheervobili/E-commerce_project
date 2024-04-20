@@ -7,8 +7,13 @@ const userdatamodel = require("./models/userdataschema");
 const vegetablesmodel = require("./models/vegetables");
 const floursmodel = require("./models/flours");
 const ricemodel = require("./models/rice");
+const dalsmodel = require("./models/dals");
 const cartmodel = require("./models/cart");
 const coffeemodel = require("./models/coffees");
+const spicesmodel = require("./models/spices");
+const snacksmodel = require("./models/snacks");
+const milkmodel = require("./models/milks");
+const saucesmodel = require("./models/sauces");
 const oilmodel = require("./models/oils");
 const cleaningmodel = require("./models/cleaners");
 const hygienemodel = require("./models/hygiene");
@@ -43,6 +48,10 @@ app.get("/", (req, res) => {
 
 app.get("/home", (req, res) => {
 	res.render("home", { loginstatus: req.session.status, adminstatus: false });
+});
+
+app.get("/adminhome", (req, res) => {
+	res.render("home", { loginstatus: req.session.status, adminstatus: true });
 });
 
 app.get("/signup", (req, res) => {
@@ -132,7 +141,7 @@ app.post("/adminlogin", async (req, res) => {
 	if (email === "admin@gmail.com" && password === "123") {
 		req.session.email = email;
 		req.session.status = true;
-		res.render("adminpage", { adminstatus: true, loginstatus: false });
+		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false });
 	} else {
 		res.render("adminlogin", { loginerror: true, adminstatus: false });
 	}
@@ -180,7 +189,7 @@ app.get("/vegetables", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'vegetables';
-		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -190,7 +199,6 @@ app.post('/additem',async(req,res)=>{
 	const {name,imageurl,price,quantity} = req.body;
 	const itemname = req.session.itemtype;
 	const modelname = itemname + 'model';
-	console.log(modelname);
 	if(modelname === 'vegetablesmodel'){
 		const newitem = new vegetablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
 		await newitem.save();
@@ -219,10 +227,8 @@ app.post('/additem',async(req,res)=>{
 		const newitem = new disposablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
 		await newitem.save();
 	}
-	res.render("adminpage", { adminstatus: true, loginstatus: false });
+	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true });
 });
-
-// hello
 
 app.get("/flours", async (req, res) => {
 	const email = req.session.email;
@@ -231,9 +237,61 @@ app.get("/flours", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'flours';
-		res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	}
+});
+
+app.get('/dal-lentils-legumes',async(req,res)=>{
+	const email = req.session.email;
+	const dals = await dalsmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if(email === 'admin@gmail.com'){
+		req.session.itemtype = 'dals';
+		res.render("dals", {dals: dals,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+	}else{
+		res.render("dals", {dals: dals,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	}
+});
+
+app.get('/spices',async(req,res)=>{
+	const email = req.session.email;
+	const spices = await spicesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if(email === 'admin@gmail.com'){
+		req.session.itemtype = 'spices';
+		res.render("spices", {spices: spices,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+	}else{
+		res.render("spices", {spices: spices,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	}
+});
+
+app.get('/milk-nondiary',async(req,res)=>{
+	const email = req.session.email;
+	const milk = await milkmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if(email === 'admin@gmail.com'){
+		req.session.itemtype = 'milk';
+		res.render("milk", {milk: milk,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+	}else{
+		res.render("milk", {milk: milk,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	}
+});
+
+app.get('/sauces-masala-paste',async(req,res)=>{
+	const email = req.session.email;
+	const sauces = await saucesmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if(email === 'admin@gmail.com'){
+		req.session.itemtype = 'sauces';
+		res.render("sauces", {sauces: sauces,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+	}else{
+		res.render("sauces", {sauces: sauces,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
 });
 
@@ -244,9 +302,22 @@ app.get("/rice", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'rice';
-		res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	}
+});
+
+app.get('/pasta-noodles-snack',async(req,res)=>{
+	const email = req.session.email;
+	const snacks = await snacksmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if(email === 'admin@gmail.com'){
+		req.session.itemtype = 'snacks';
+		res.render("snacks", {snacks: snacks,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+	}else{
+		res.render("snacks", {snacks: snacks,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
 });
 
@@ -257,7 +328,7 @@ app.get("/coffee", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'vegetables';
-		res.render("coffee", {coffee: coffee,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("coffee", {coffee: coffee,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("coffee", {coffee: coffee,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -270,7 +341,7 @@ app.get("/oil", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'oil';
-		res.render("oil", {oil: oil,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("oil", {oil: oil,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("oil", {oil: oil,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -283,7 +354,7 @@ app.get("/cleaning-supplies", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'vegetables';
-		res.render("cleaners", {cleaners: cleaners,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("cleaners", {cleaners: cleaners,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("cleaners", {cleaners: cleaners,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -296,7 +367,7 @@ app.get("/personalhygiene", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'hygienes';
-		res.render("hygienes", {hygienes: hygienes,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("hygienes", {hygienes: hygienes,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("hygienes", {hygienes: hygienes,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -309,7 +380,7 @@ app.get("/toiletaries", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'toiletaries';
-		res.render("toiletaries", {toiletaries: toiletaries,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("toiletaries", {toiletaries: toiletaries,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("toiletaries", {toiletaries: toiletaries,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
@@ -322,7 +393,7 @@ app.get("/disposables", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'disposables';
-		res.render("disposables", {disposables: disposables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("disposables", {disposables: disposables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
 	}else{
 		res.render("disposables", {disposables: disposables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
 	}
