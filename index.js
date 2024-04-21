@@ -141,7 +141,7 @@ app.post("/adminlogin", async (req, res) => {
 	if (email === "admin@gmail.com" && password === "123") {
 		req.session.email = email;
 		req.session.status = true;
-		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false,itemdeleted : false ,itemname : null});
+		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false,itemdeleted : false ,itemname : null,itemdata : false,updatedstatus : false});
 	} else {
 		res.render("adminlogin", { loginerror: true, adminstatus: false });
 	}
@@ -189,9 +189,9 @@ app.get("/vegetables", async (req, res) => {
 	req.session.alertMessage = null;
 	if(email === 'admin@gmail.com'){
 		req.session.itemtype = 'vegetables';
-		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
+		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true,itemdata : null});
 	}else{
-		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false,itemdata : null});
 	}
 });
 
@@ -227,7 +227,7 @@ app.post('/additem',async(req,res)=>{
 		const newitem = new disposablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
 		await newitem.save();
 	}
-	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true ,itemdeleted : false ,itemname : null});
+	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true ,itemdeleted : false ,itemname : null,updatedstatus : false});
 });
 
 app.get("/flours", async (req, res) => {
@@ -468,6 +468,19 @@ app.post("/deleteitem", async (req, res) => {
 	}
 });
 
+app.post('/update-item',async(req,res)=>{
+	const email = req.session.email;
+	if(email === 'admin@gmail.com'){
+		const {updateitemName,updateimageUrl,updatequantity,updateprice,itemid,itemcategory} = req.body;
+		const Model = mongoose.model(itemcategory);
+		const updatedItem = await Model.findByIdAndUpdate(itemid, {name: updateitemName,imageUrl: updateimageUrl,quantity: updatequantity,price: updateprice}, { new: true }); 
+		if(updatedItem){
+			const itemData = await Model.findOne({_id : itemid});
+			res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : false , itemdata : itemData,itemname : itemData.name,updatedstatus : true});
+		}
+	}
+});
+
 app.post('/delete-item',async(req,res)=>{
 	const {itemid,itemcategory} = req.body;
 	const Model = mongoose.model(itemcategory);
@@ -478,7 +491,7 @@ app.post('/delete-item',async(req,res)=>{
 		if (!deletedItem) {
 			return res.status(404).json({ message: "Item not found" });
 		}
-		res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : true , itemname : itemData.itemname});
+		res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : true , itemname : itemData.itemname , itemdata : itemData,updatedstatus : false});
 	}
 });
 

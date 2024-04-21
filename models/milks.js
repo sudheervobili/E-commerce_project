@@ -19,6 +19,6 @@ const milkschema = new mongoose.Schema({
 	},
 });
 
-const milk = mongoose.model("milk", milkschema);
+const milks = mongoose.model("milks", milkschema);
 
-module.exports = milk;
+module.exports = milks;
