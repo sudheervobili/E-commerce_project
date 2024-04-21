@@ -141,7 +141,15 @@ app.post("/adminlogin", async (req, res) => {
 	if (email === "admin@gmail.com" && password === "123") {
 		req.session.email = email;
 		req.session.status = true;
-		res.render("adminpage", { adminstatus: true, loginstatus: false,newitem : false,itemdeleted : false ,itemname : null,itemdata : false,updatedstatus : false});
+		res.render("adminpage", {
+			adminstatus: true,
+			loginstatus: false,
+			newitem: false,
+			itemdeleted: false,
+			itemname: null,
+			itemdata: false,
+			updatedstatus: false,
+		});
 	} else {
 		res.render("adminlogin", { loginerror: true, adminstatus: false });
 	}
@@ -187,47 +195,113 @@ app.get("/vegetables", async (req, res) => {
 	const vegetables = await vegetablesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'vegetables';
-		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true,itemdata : null});
-	}else{
-		res.render("vegetables", {vegetables: vegetables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false,itemdata : null});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "vegetables";
+		res.render("vegetables", {
+			vegetables: vegetables,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+			itemdata: null,
+		});
+	} else {
+		res.render("vegetables", {
+			vegetables: vegetables,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+			itemdata: null,
+		});
 	}
 });
 
-app.post('/additem',async(req,res)=>{
-	const {name,imageurl,price,quantity} = req.body;
+app.post("/additem", async (req, res) => {
+	const { name, imageurl, price, quantity } = req.body;
 	const itemname = req.session.itemtype;
-	const modelname = itemname + 'model';
-	if(modelname === 'vegetablesmodel'){
-		const newitem = new vegetablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	const modelname = itemname + "model";
+	if (modelname === "vegetablesmodel") {
+		const newitem = new vegetablesmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'floursmodel'){
-		const newitem = new floursmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "floursmodel") {
+		const newitem = new floursmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'ricemodel'){
-		const newitem = new ricemodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "ricemodel") {
+		const newitem = new ricemodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'coffeemodel'){
-		const newitem = new coffeemodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "coffeemodel") {
+		const newitem = new coffeemodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'cleaningmodel'){
-		const newitem = new cleaningmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "cleaningmodel") {
+		const newitem = new cleaningmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'oilmodel'){
-		const newitem = new oilmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "oilmodel") {
+		const newitem = new oilmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'hygienemodel'){
-		const newitem = new hygienemodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "hygienemodel") {
+		const newitem = new hygienemodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'toiletariesmodel'){
-		const newitem = new toiletariesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "toiletariesmodel") {
+		const newitem = new toiletariesmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
-	}else if(modelname === 'disposablesmodel'){
-		const newitem = new disposablesmodel({name : name,price : price,quantity : quantity,imageUrl : imageurl});
+	} else if (modelname === "disposablesmodel") {
+		const newitem = new disposablesmodel({
+			name: name,
+			price: price,
+			quantity: quantity,
+			imageUrl: imageurl,
+		});
 		await newitem.save();
 	}
-	res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : true ,itemdeleted : false ,itemname : null,updatedstatus : false});
+	res.render("adminpage", {
+		adminstatus: true,
+		loginstatus: false,
+		newitem: true,
+		itemdeleted: false,
+		itemname: null,
+		updatedstatus: false,
+	});
 });
 
 app.get("/flours", async (req, res) => {
@@ -235,63 +309,123 @@ app.get("/flours", async (req, res) => {
 	const flours = await floursmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'flours';
-		res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("flours", {flours: flours,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "flours";
+		res.render("flours", {
+			flours: flours,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("flours", {
+			flours: flours,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
-app.get('/dal-lentils-legumes',async(req,res)=>{
+app.get("/dal-lentils-legumes", async (req, res) => {
 	const email = req.session.email;
 	const dals = await dalsmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'dals';
-		res.render("dals", {dals: dals,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("dals", {dals: dals,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "dals";
+		res.render("dals", {
+			dals: dals,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("dals", {
+			dals: dals,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
-app.get('/spices',async(req,res)=>{
+app.get("/spices", async (req, res) => {
 	const email = req.session.email;
 	const spices = await spicesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'spices';
-		res.render("spices", {spices: spices,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("spices", {spices: spices,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "spices";
+		res.render("spices", {
+			spices: spices,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("spices", {
+			spices: spices,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
-app.get('/milk-nondiary',async(req,res)=>{
+app.get("/milk-nondiary", async (req, res) => {
 	const email = req.session.email;
 	const milk = await milkmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'milk';
-		res.render("milk", {milk: milk,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("milk", {milk: milk,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "milk";
+		res.render("milk", {
+			milk: milk,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("milk", {
+			milk: milk,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
-app.get('/sauces-masala-paste',async(req,res)=>{
+app.get("/sauces-masala-paste", async (req, res) => {
 	const email = req.session.email;
 	const sauces = await saucesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'sauces';
-		res.render("sauces", {sauces: sauces,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("sauces", {sauces: sauces,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "sauces";
+		res.render("sauces", {
+			sauces: sauces,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("sauces", {
+			sauces: sauces,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -300,24 +434,48 @@ app.get("/rice", async (req, res) => {
 	const rice = await ricemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'rice';
-		res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("rice", {rice: rice,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "rice";
+		res.render("rice", {
+			rice: rice,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("rice", {
+			rice: rice,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
-app.get('/pasta-noodles-snack',async(req,res)=>{
+app.get("/pasta-noodles-snack", async (req, res) => {
 	const email = req.session.email;
 	const snacks = await snacksmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'snacks';
-		res.render("snacks", {snacks: snacks,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("snacks", {snacks: snacks,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "snacks";
+		res.render("snacks", {
+			snacks: snacks,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("snacks", {
+			snacks: snacks,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -326,11 +484,23 @@ app.get("/coffee", async (req, res) => {
 	const coffee = await coffeemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'vegetables';
-		res.render("coffee", {coffee: coffee,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("coffee", {coffee: coffee,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "vegetables";
+		res.render("coffee", {
+			coffee: coffee,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("coffee", {
+			coffee: coffee,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -339,24 +509,71 @@ app.get("/oil", async (req, res) => {
 	const oil = await oilmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'oil';
-		res.render("oil", {oil: oil,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("oil", {oil: oil,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "oil";
+		res.render("oil", {
+			oil: oil,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("oil", {
+			oil: oil,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
-
+app.get("/dal-lentils-legumes", async (req, res) => {
+	const email = req.session.email;
+	const dal = await dalsmodel.find();
+	const alertMessage = req.session.alertMessage;
+	req.session.alertMessage = null;
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "dals";
+		res.render("dals", {
+			dals: dals,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("dals", {
+			dals: dals,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
+	}
+});
 app.get("/cleaning-supplies", async (req, res) => {
 	const email = req.session.email;
 	const cleaners = await cleaningmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'vegetables';
-		res.render("cleaners", {cleaners: cleaners,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("cleaners", {cleaners: cleaners,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "vegetables";
+		res.render("cleaners", {
+			cleaners: cleaners,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("cleaners", {
+			cleaners: cleaners,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -365,11 +582,23 @@ app.get("/personalhygiene", async (req, res) => {
 	const hygienes = await hygienemodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'hygienes';
-		res.render("hygienes", {hygienes: hygienes,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("hygienes", {hygienes: hygienes,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "hygienes";
+		res.render("hygienes", {
+			hygienes: hygienes,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("hygienes", {
+			hygienes: hygienes,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -378,11 +607,23 @@ app.get("/toiletaries", async (req, res) => {
 	const toiletaries = await toiletariesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'toiletaries';
-		res.render("toiletaries", {toiletaries: toiletaries,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("toiletaries", {toiletaries: toiletaries,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "toiletaries";
+		res.render("toiletaries", {
+			toiletaries: toiletaries,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("toiletaries", {
+			toiletaries: toiletaries,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 
@@ -391,11 +632,23 @@ app.get("/disposables", async (req, res) => {
 	const disposables = await disposablesmodel.find();
 	const alertMessage = req.session.alertMessage;
 	req.session.alertMessage = null;
-	if(email === 'admin@gmail.com'){
-		req.session.itemtype = 'disposables';
-		res.render("disposables", {disposables: disposables,loginstatus: req.session.status,adminstatus: true,alertMessage: alertMessage,adminloginstatus : true});
-	}else{
-		res.render("disposables", {disposables: disposables,loginstatus: req.session.status,adminstatus: false,alertMessage: alertMessage,adminloginstatus : false});
+	if (email === "admin@gmail.com") {
+		req.session.itemtype = "disposables";
+		res.render("disposables", {
+			disposables: disposables,
+			loginstatus: req.session.status,
+			adminstatus: true,
+			alertMessage: alertMessage,
+			adminloginstatus: true,
+		});
+	} else {
+		res.render("disposables", {
+			disposables: disposables,
+			loginstatus: req.session.status,
+			adminstatus: false,
+			alertMessage: alertMessage,
+			adminloginstatus: false,
+		});
 	}
 });
 app.get("/additem", (req, res) => {
@@ -444,13 +697,14 @@ app.get("/mycart", async (req, res) => {
 	});
 });
 
-app.post('/checkout',async(req,res)=>{
-	const {itemName,itemQuantity,itemQuantityLevel,itemPrice,itemTotal} = req.body;
-	console.log(itemName,itemQuantity,itemQuantityLevel,itemPrice,itemTotal);
+app.post("/checkout", async (req, res) => {
+	const { itemName, itemQuantity, itemQuantityLevel, itemPrice, itemTotal } =
+		req.body;
+	console.log(itemName, itemQuantity, itemQuantityLevel, itemPrice, itemTotal);
 	const email = req.session.email;
-	const cartdata = await cartmodel.find({email : email});
+	const cartdata = await cartmodel.find({ email: email });
 	// res.render("checkout",{data : cartdata});
-})
+});
 
 app.post("/deleteitem", async (req, res) => {
 	const { itemid } = req.body;
@@ -468,30 +722,62 @@ app.post("/deleteitem", async (req, res) => {
 	}
 });
 
-app.post('/update-item',async(req,res)=>{
+app.post("/update-item", async (req, res) => {
 	const email = req.session.email;
-	if(email === 'admin@gmail.com'){
-		const {updateitemName,updateimageUrl,updatequantity,updateprice,itemid,itemcategory} = req.body;
+	if (email === "admin@gmail.com") {
+		const {
+			updateitemName,
+			updateimageUrl,
+			updatequantity,
+			updateprice,
+			itemid,
+			itemcategory,
+		} = req.body;
 		const Model = mongoose.model(itemcategory);
-		const updatedItem = await Model.findByIdAndUpdate(itemid, {name: updateitemName,imageUrl: updateimageUrl,quantity: updatequantity,price: updateprice}, { new: true }); 
-		if(updatedItem){
-			const itemData = await Model.findOne({_id : itemid});
-			res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : false , itemdata : itemData,itemname : itemData.name,updatedstatus : true});
+		const updatedItem = await Model.findByIdAndUpdate(
+			itemid,
+			{
+				name: updateitemName,
+				imageUrl: updateimageUrl,
+				quantity: updatequantity,
+				price: updateprice,
+			},
+			{ new: true }
+		);
+		if (updatedItem) {
+			const itemData = await Model.findOne({ _id: itemid });
+			res.render("adminpage", {
+				adminstatus: true,
+				loginstatus: false,
+				newitem: false,
+				itemdeleted: false,
+				itemdata: itemData,
+				itemname: itemData.name,
+				updatedstatus: true,
+			});
 		}
 	}
 });
 
-app.post('/delete-item',async(req,res)=>{
-	const {itemid,itemcategory} = req.body;
+app.post("/delete-item", async (req, res) => {
+	const { itemid, itemcategory } = req.body;
 	const Model = mongoose.model(itemcategory);
-	const itemData = await Model.findOne({_id : itemid});
+	const itemData = await Model.findOne({ _id: itemid });
 	const email = req.session.email;
-	if(email === 'admin@gmail.com'){
+	if (email === "admin@gmail.com") {
 		const deletedItem = await Model.findByIdAndDelete(itemid);
 		if (!deletedItem) {
 			return res.status(404).json({ message: "Item not found" });
 		}
-		res.render("adminpage", { adminstatus: true, loginstatus: false ,newitem : false,itemdeleted : true , itemname : itemData.itemname , itemdata : itemData,updatedstatus : false});
+		res.render("adminpage", {
+			adminstatus: true,
+			loginstatus: false,
+			newitem: false,
+			itemdeleted: true,
+			itemname: itemData.itemname,
+			itemdata: itemData,
+			updatedstatus: false,
+		});
 	}
 });
 
